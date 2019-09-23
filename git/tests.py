@@ -1,7 +1,7 @@
 import unittest
 import random
 
-from base_types_exceptions_loops.homework import (
+from homework import (
     is_two_object_has_same_value,
     is_two_objects_has_same_type,
     is_two_objects_is_the_same_objects,
@@ -105,9 +105,9 @@ class TestLoopExercises(unittest.TestCase):
         given_data = [1, 2, -9, 6, 7, 6, -19, -12]
         expected_result = [1, 2, 6, 7, 6]
         self.assertListEqual(remove_from_list_all_negative_numbers(given_data), expected_result)
+
         given_data = [-33, 68, -5, -65, 47, -55, -36, 85, -6, 50]
         expected_result = [68, 47, 85, 50]
-
         self.assertListEqual(remove_from_list_all_negative_numbers(given_data), expected_result)
 
         given_data = [-14, -59, -36, -69, -73, -69, -44, -83, -77, -93]
