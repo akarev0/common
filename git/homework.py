@@ -4,7 +4,7 @@ This is a list of functions that should be completed.
 
 from typing import Any
 from typing import List
-import random
+from string import ascii_lowercase
 
 
 class OurAwesomeException(Exception):
@@ -89,9 +89,10 @@ def multiple_ints_with_conversion(first_value: Any, second_value: Any) -> int:
             print("Not valid input data")
         >>> "Not valid input data"
     """
-    first_value = int(first_value)
-    second_value = int(second_value)
-    return first_value * second_value
+    try:
+        return int(first_value) * int(second_value)
+    except ValueError:
+        raise ValueError("Not valid data")
 
 
 def is_word_in_text(word: str, text: str) -> bool:
@@ -149,10 +150,9 @@ def alphabet() -> dict:
         alphabet()
         >>> {"a": 1, "b": 2 ...}
     """
-    alphabet_value = {1: 'a', 2: 'b', 3: 'c', 4: 'd', 5: 'e', 6: 'f', 7: 'g', 8: 'h', 9: 'i', 10: 'j', 11: 'k', 12: 'l',
-                      13: 'm', 14: 'n', 15: 'o', 16: 'p', 17: 'q', 18: 'r', 19: 's', 20: 't', 21: 'u', 22: 'v', 23: 'w',
-                      24: 'x', 25: 'y', 26: 'z'}
-
+    alphabet_value = {}
+    for letter in ascii_lowercase:
+        alphabet_value[letter] = ascii_lowercase.index(letter) + 1
     return alphabet_value
 
 
