@@ -18,7 +18,7 @@ def is_two_object_has_same_value(first: Any, second: Any) -> bool:
     """
     if first == second:
         return True
-    if first != second:
+    else:
         return False
 
 
@@ -29,7 +29,7 @@ def is_two_objects_has_same_type(first: Any, second: Any) -> bool:
     """
     if type(first) == type(second):
         return True
-    if type(first) != type(second):
+    else:
         return False
 
 
@@ -40,7 +40,7 @@ def is_two_objects_is_the_same_objects(first: Any, second: Any) -> bool:
     """
     if id(first) == id(second):
         return True
-    if id(first) != id(second):
+    else:
         return False
 
 
