@@ -1,7 +1,7 @@
 import unittest
 import math
 
-from tests.homework import Rectangle
+from .homework import Rectangle
 
 
 class RectangleTest(unittest.TestCase):
@@ -38,6 +38,7 @@ class RectangleTest(unittest.TestCase):
     def test_get_radius_of_inscribed_circle(self):
         rect = self.rect_instance()
         self.assertEqual(rect.get_radius_of_inscribed_circle(), rect.get_rectangle_diagonal() / (2 * math.sqrt(2)))
+        self.assertRaises(ValueError, rect.get_radius_of_circumscribed_circle())
 
 
 if __name__ == "__main__":
