@@ -37,8 +37,10 @@ class RectangleTest(unittest.TestCase):
 
     def test_get_radius_of_inscribed_circle(self):
         rect = self.rect_instance()
+        rect1 = Rectangle(3, 2)
         self.assertEqual(rect.get_radius_of_inscribed_circle(), rect.get_rectangle_diagonal() / (2 * math.sqrt(2)))
-        self.assertRaises(ValueError, rect.get_radius_of_circumscribed_circle())
+#        self.assertRaises(ValueError, rect.get_radius_of_circumscribed_circle())
+        self.assertRaises(ValueError, rect1.get_radius_of_inscribed_circle)
 
 
 if __name__ == "__main__":
