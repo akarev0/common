@@ -60,7 +60,7 @@ sudo apt-get install python3.7-dev
 ```.postgres=# 
 
 \help
-\?
+\?  
 
 ```
 to see all possible commands
