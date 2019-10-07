@@ -29,10 +29,10 @@ def task_2_remove_dict_fields(data: DT, redundant_keys: List[str]) -> DT:
        remove_dict_field([{'name': 'Alex', 'age': 26}, {'name': 'denys', 'age': 89}], 'age')
         >>> [{'name': 'Alex'}, {'name': 'denys'}]
     """
-    for i in data:
-        for k in redundant_keys:
-            if k in i:
-                del i[k]
+    for person in data:
+        for key in redundant_keys:
+            if key in person:
+                del person[key]
     return data
 
 
