@@ -1,9 +1,7 @@
 import unittest
 from unittest.mock import patch
 
-<<<<<<< Updated upstream
-from tests_practice.homework import list_without_duplicates
-=======
+
 from .homework import (
     list_without_duplicates,
     number_of_times,
@@ -26,7 +24,6 @@ from .homework import (
     task_19_string_with_the_letters_in_alphabetical_order,
     task_20_return_true_of_false
 )
->>>>>>> Stashed changes
 
 
 class Test(unittest.TestCase):
@@ -37,8 +34,6 @@ class Test(unittest.TestCase):
         results = [1, 2, 3, 5, 8, 13]
         self.assertEqual(list_without_duplicates(first_list, second_list), results)
 
-<<<<<<< Updated upstream
-=======
     def test_number_of_times(self):
         sentence = "I am a good developer. I am also a writer"
         self.assertEqual(number_of_times(sentence), 5)
