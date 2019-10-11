@@ -32,7 +32,9 @@ class Test(unittest.TestCase):
         first_list = [1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89]
         second_list = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
         results = [1, 2, 3, 5, 8, 13]
+        third_list = [13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1]
         self.assertEqual(list_without_duplicates(first_list, second_list), results)
+        self.assertEqual(list_without_duplicates(first_list, third_list), results)
 
     def test_number_of_times(self):
         sentence = "I am a good developer. I am also a writer"
@@ -52,8 +54,10 @@ class Test(unittest.TestCase):
 
     def test_task_5_push_all_zeros(self):
         input_list = [0, 2, 3, 4, 6, 7, 10]
+        input_list_1 = [0, 2, 0, 3, 4, 6, 7, 10]
         result_list = [2, 3, 4, 6, 7, 10, 0]
         self.assertEqual(task_5_push_all_zeros(input_list), result_list)
+        self.assertEqual(task_5_push_all_zeros(input_list_1), result_list)
 
     def test_task_6_check_a_sequence_of_number(self):
         input_data = [5, 7, 9, 11]

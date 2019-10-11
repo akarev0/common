@@ -18,8 +18,7 @@ def list_without_duplicates(list1, list2):
 
 
 def number_of_times(sentence):
-    num_count = sentence.count('a')
-    return num_count
+    return sentence.count('a')
 
 
 def integer_is_a_power_of_three(number):
