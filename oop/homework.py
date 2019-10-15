@@ -37,18 +37,34 @@ class Cat:
     * Implement get_average_speed and return average_speed
 
     """
+    """Add to class saturation_level variable with value 50"""
+    saturation_level = 50
 
     def __init__(self, age):
-        pass
+        self.age = age
 
     def eat(self, product):
-        pass
+        """ Implement method eat which will receive from user product value
+            if product eq fodder use _increase_saturation_level with value eq 10
+            if product eq apple use _increase_saturation_level with value eq 5
+            if product eq milk use _increase_saturation_level with value eq 2
+            """
+        if product == "fodder":
+            self._increase_saturation_level(10)
+        if product == "apple":
+            self._increase_saturation_level(5)
+        if product == "milk":
+            self._increase_saturation_level(2)
 
     def _reduce_saturation_level(self, value):
-        pass
+        self.saturation_level = self.saturation_level - value
+        if self.saturation_level < 0:
+            self.saturation_level = 0
 
     def _increase_saturation_level(self, value):
-        pass
+        self.saturation_level = self.saturation_level + value
+        if self.saturation_level > 100:
+            self.saturation_level = 100
 
     def _set_average_speed(self):
         pass
@@ -60,7 +76,17 @@ class Cat:
         pass
 
     def get_average_speed(self):
-        pass
+        """ Implement private method _set_average_speed
+            if age less or eq 7 return 12
+            if age between 7(not including) and 10(including) return 9
+            if age grosser than 10(not including) return 6
+        """
+        if self.age < 7:
+            self.age = 12
+        if self.age in range(8, 11):
+            self.age = 9
+        if self.age > 10:
+            self.age = 6
 
 
 class Cheetah:
