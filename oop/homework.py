@@ -251,7 +251,6 @@ class House:
     """
     !!!! DON'T WRITE NEW METHODS TO THIS CLASS EXCEPT FOR THOSE LISTED BELOW !!!
     """
-
     def __init__(self):
         """ * Add super private variable __walls and its value will be empty list
             * Add super private variable __windows and its value will be empty list
@@ -269,12 +268,12 @@ class House:
             if width or height eq 0 raise ValueError "Value must be not 0"
             if user have more than 4 walls raise ValueError "Our house can not have more than 4 walls"
             """
-        new_wall = Wall(width, height)
-        self.__walls.append(new_wall)
         if width <= 0 or height <= 0:
             raise ValueError("Value must be not 0")
-        if len(self.__walls) >= 5:
+        if len(self.__walls) >= 4:
             raise ValueError("Our house can not have more than 4 walls")
+        new_wall = Wall(width, height)
+        self.__walls.append(new_wall)
 
     def create_roof(self, width, height, roof_type):
         """Implement method create_roof which will create new roof using class Roof and assign it to the __roof variable
@@ -362,5 +361,6 @@ class House:
 
     def get_room_square(self):
         """ Implement method get_room_square that returns the square of our room
-      (from walls_square divide windows and door square)"""
-        pass
+      (from walls_square subtract windows and door square)"""
+
+        return self.get_walls_square() - (self.get_windows_square() + self.get_door_square())
