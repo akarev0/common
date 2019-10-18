@@ -1,8 +1,8 @@
 import unittest
+import pytest
 from unittest.mock import patch
 
-
-from .homework import (
+from tests_practice.homework import (
     list_without_duplicates,
     number_of_times,
     integer_is_a_power_of_three,
@@ -80,67 +80,10 @@ class Test(unittest.TestCase):
         self.assertEqual(task_9_count_the_elements_in_a_list_until_an_element_is_a_tuple(input_data), 3)
 
     def test_task_10_return_the_string_in_reversed_order(self):
-        input_string = "Hello World and Coders"
+        input_string = task_10_return_the_string_in_reversed_order("Hello World and Coders")
         reversed_string = "sredoC dna dlroW olleH"
-        self.assertEqual(task_10_return_the_string_in_reversed_order(input_string), reversed_string)
+        assert input_string == reversed_string
 
-    def test_task_11_return_number_of_hours_and_minutes(self):
-        num = 63
-        self.assertEqual(task_11_number_of_hours_and_minutes(num), "%d:%d" % (1, 3))
-
-    def test_task_12_return_first_largest_word_in_string(self):
-        input_0 = "fun&!! time"
-        input_1 = "I love dogs"
-        self.assertEqual(task_12_first_largest_word_in_string(input_0), "time")
-        self.assertEqual(task_12_first_largest_word_in_string(input_1), "love")
-
-    @patch("builtins.input", return_value="Michele is name My")
-    def test_task_13_ask_and_print_back_with_the_backwards_order(self, mock):
-        actual_result = task_13_ask_and_print_back_with_the_backwards_order()
-        expected_result = "My name is Michele"
-        self.assertEqual(actual_result, expected_result)
-
-    @patch("builtins.input", return_value=3)
-    def test_task_14_how_many_Fibonnaci_numbers_to_generate(self, mock):
-        result = task_14_how_many_fibonnaci_numbers()
-        expected_result = [1, 1, 2]
-        self.assertEqual(result, expected_result)
-
-    def test_task_15_list_that_has_only_the_even_elements(self):
-        given_list = task_15_list_that_has_only_the_even_elements([1, 4, 9, 16, 25, 36, 49, 64, 81, 100])
-        result_list = [4, 16, 36, 64, 100]
-        self.assertEqual(given_list, result_list)
-
-    @patch("builtins.input", return_value=4)
-    def test_task_16_numbers_from_1_to_input_number(self, mock):
-        result = task_16_input_number()
-        expected_result = 10
-        self.assertEqual(result, expected_result)
-
-    @patch("builtins.input", return_value=4)
-    def test_task_17(self, mock):
-        actual_result = task_17_return_factorial()
-        expected_result = 24
-        self.assertEqual(actual_result, expected_result)
-
-    def test_task_18_replace_every_letter_in_the_string(self):
-        given_data = "abcd"
-        actual_result = task_18_replace_every_letter_in_the_string(given_data)
-        expected_result = "bcdE"
-        self.assertEqual(actual_result, expected_result)
-
-    def test_task_19_string_with_the_letters_in_alphabetical_order(self):
-        input_string = task_19_string_with_the_letters_in_alphabetical_order("edcba")
-        output_string = "abcde"
-        self.assertEqual(input_string, output_string)
-
-    def test_task_20_return_true_of_false(self):
-        num1 = task_20_return_true_of_false(22, 25)
-        num2 = task_20_return_true_of_false(23, 22)
-        num3 = task_20_return_true_of_false(22, 22)
-        self.assertTrue(num1)
-        self.assertFalse(num2)
-        self.assertEqual(num3, "-1")
 
 
 if __name__ == "__main__":
