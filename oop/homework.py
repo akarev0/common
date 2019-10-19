@@ -40,8 +40,6 @@ class Cat:
     * Implement get_average_speed and return average_speed
 
     """
-    """Add to class saturation_level variable with value 50"""
-    saturation_level = 50
 
     def __init__(self, age):
         self.age = age
@@ -49,14 +47,8 @@ class Cat:
         self.saturation_level = 50
 
     def eat(self, product):
-        if product == "fodder":
-            self._increase_saturation_level(10)
-        if product == "apple":
-            self._increase_saturation_level(5)
-        if product == "milk":
-            self._increase_saturation_level(2)
-        if product == "another_food":
-            self._increase_saturation_level(0)
+        food_inc = {"fodder": 10, "apple": 5, "milk": 2, "another_food": 0}
+        self._increase_saturation_level(food_inc.get(product))
 
     def _reduce_saturation_level(self, value):
         self.saturation_level = self.saturation_level - value
@@ -80,19 +72,14 @@ class Cat:
         ran_km = self.average_speed * hours
         if ran_km <= 25:
             self._reduce_saturation_level(2)
-            return f"Your cat run {ran_km} kilometers"
         if ran_km in range(25, 50):
             self._reduce_saturation_level(5)
-            return f"Your cat run {ran_km} kilometers"
         if ran_km in range(51, 100):
             self._reduce_saturation_level(15)
-            return f"Your cat run {ran_km} kilometers"
         if ran_km in range(101, 200):
             self._reduce_saturation_level(25)
-            return f"Your cat run {ran_km} kilometers"
         if ran_km >= 201:
             self._reduce_saturation_level(50)
-            return f"Your cat run {ran_km} kilometers"
 
     def get_saturation_level(self):
         if self.saturation_level > 0:
@@ -362,5 +349,4 @@ class House:
     def get_room_square(self):
         """ Implement method get_room_square that returns the square of our room
       (from walls_square subtract windows and door square)"""
-
         return self.get_walls_square() - (self.get_windows_square() + self.get_door_square())
