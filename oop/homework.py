@@ -106,10 +106,8 @@ class Cheetah(Cat):
 
     """
     def eat(self, value):
-        if value == "gazelle":
-            self._increase_saturation_level(30)
-        if value == "rabbit":
-            self._increase_saturation_level(15)
+        food_inc = {"gazelle": 30, "rabbit": 15, "another_food": 0}
+        self._increase_saturation_level(food_inc.get(value))
 
     def _set_average_speed(self):
         if self.age <= 5:
@@ -218,12 +216,11 @@ class Door:
         return self.width * self.height
 
     def door_price(self, material_value):
-        if material_value == "wood":
-            return self.wood_price * self.door_square()
-        if material_value == "metal":
-            return self.metal_price * self.door_square()
-        if material_value != "wood" and material_value != "metal":
+        materials = {"wood": self.wood_price, "metal": self.metal_price}
+        result = self.door_square() * materials.get(material_value)
+        if material_value not in materials.keys():
             raise ValueError("Sorry we don't have such material")
+        return result
 
     def update_wood_price(self, new_price):
         self.wood_price = new_price
