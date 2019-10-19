@@ -13,16 +13,7 @@ from tests_practice.homework import (
     task_8_find_a_missing_number_from_a_list,
     task_9_count_the_elements_in_a_list_until_an_element_is_a_tuple,
     task_10_return_the_string_in_reversed_order,
-    task_11_number_of_hours_and_minutes,
-    task_12_first_largest_word_in_string,
-    task_13_ask_and_print_back_with_the_backwards_order,
-    task_14_how_many_fibonnaci_numbers,
-    task_15_list_that_has_only_the_even_elements,
-    task_16_input_number,
-    task_17_return_factorial,
-    task_18_replace_every_letter_in_the_string,
-    task_19_string_with_the_letters_in_alphabetical_order,
-    task_20_return_true_of_false
+
 )
 
 
