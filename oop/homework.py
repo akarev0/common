@@ -47,8 +47,8 @@ class Cat:
         self.saturation_level = 50
 
     def eat(self, product):
-        food_inc = {"fodder": 10, "apple": 5, "milk": 2, "another_food": 0}
-        self._increase_saturation_level(food_inc.get(product))
+        food_inc = {"fodder": 10, "apple": 5, "milk": 2}
+        self._increase_saturation_level(food_inc.get(product, 0))
 
     def _reduce_saturation_level(self, value):
         self.saturation_level = self.saturation_level - value
@@ -106,8 +106,8 @@ class Cheetah(Cat):
 
     """
     def eat(self, value):
-        food_inc = {"gazelle": 30, "rabbit": 15, "another_food": 0}
-        self._increase_saturation_level(food_inc.get(value))
+        food_inc = {"gazelle": 30, "rabbit": 15}
+        self._increase_saturation_level(food_inc.get(value, 0))
 
     def _set_average_speed(self):
         if self.age <= 5:
@@ -217,9 +217,9 @@ class Door:
 
     def door_price(self, material_value):
         materials = {"wood": self.wood_price, "metal": self.metal_price}
-        result = self.door_square() * materials.get(material_value)
         if material_value not in materials.keys():
             raise ValueError("Sorry we don't have such material")
+        result = self.door_square() * materials.get(material_value, 0)
         return result
 
     def update_wood_price(self, new_price):
