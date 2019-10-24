@@ -3,10 +3,8 @@
 {% block main_info %}
 <ul>
     {% for vegetable in data %}
-    <li>
-        {% if vegetable=="beetroot" %} text-transform: uppercase;
+    <li {% if vegetable=="beetroot" %} style="text-transform: uppercase;" {% endif %}>
         {{vegetable}}
-        {% endif %}
     </li>
     {% endfor %}
 </ul>
