@@ -1,10 +1,32 @@
-<!DOCTYPE html>
+{% extends "base.html"%}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Calculator</title>
 </head>
 <body>
-
+{% block main_info%}
+<h1 align="left">
+    <p>
+        {% for i in data%}
+        {% if i['title'] == "Calculator"%}
+        {{i['title']}}
+        {% endif%}
+        {% endfor%}
+    </p>
+</h1>
+<div id="images">
+    <img src="{{url_for('static', filename='calculator.png')}}" usemap="#image-map" width="650px" height="360px">
+</div>
+<div class="col-md-12 mt-md-0 mt-4  ">
+    <p>
+        {% for i in data%}
+        {% if i['title'] == "Calculator"%}
+        {{i['text']}}
+        {% endif%}
+        {% endfor%}
+    </p>
+    {% endblock%}
+</div>
 </body>
 </html>
