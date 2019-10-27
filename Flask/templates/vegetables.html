@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block main_info %}
+<ul>
+    {% for vegetable in data %}
+    <li {% if vegetable=="beetroot" %} style="text-transform: uppercase;" {% endif %}>
+        {{vegetable}}
+    </li>
+    {% endfor %}
+</ul>
+{% endblock%}
