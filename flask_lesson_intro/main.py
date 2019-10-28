@@ -12,32 +12,32 @@ def get_home_page():
 
 @app.route('/alarm_clock')
 def alarm_clock_page():
-    return render_template('alarm_clock.html', data=get_data())
+    return render_template('alarm_clock.html')
 
 
 @app.route('/headphones')
 def headphones_page():
-    return render_template('headphones.html', data=get_data())
+    return render_template('headphones.html')
 
 
 @app.route('/ipod')
 def ipod_page():
-    return render_template('ipod.html', data=get_data())
+    return render_template('ipod.html')
 
 
 @app.route('/calculator')
 def calculator_page():
-    return render_template('calculator.html', data=get_data())
+    return render_template('calculator.html')
 
 
 @app.route('/coffeemaker')
 def coffeemaker_page():
-    return render_template('coffeemaker.html', data=get_data())
+    return render_template('coffeemaker.html')
 
 
 @app.route('/battery_charger')
 def battery_charger_page():
-    return render_template('battery_charger.html', data=get_data())
+    return render_template('battery_charger.html')
 
 
 @app.route('/author')

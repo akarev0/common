@@ -1,4 +1,5 @@
 {% extends "base.html"%}
+{% from "macros.html" import funk_title_and_content%}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -10,15 +11,8 @@
     <img src="{{url_for('static', filename='battery_charger.png')}}" usemap="#image-map" width="650px" height="360px">
 </div>
 <div class="col-md-12 mt-md-0 mt-4  ">
-    <p>
-        {% for i in data%}
-        {% if i['title'] == "Battery charger"%}
-    <p>{{i['title']}}</p>
-    {{i['text']}}
-    <p>words in this text: {{i['text'] | wordcount()}}
-        {% endif%}
-        {% endfor%}
-    </p>
+    <p>{{funk_title_and_content("Battery charger")}}</p>
+    <p>This text have {{funk_title_and_content("Battery charger") | wordcount()}} words</p>
 </div>
 {% endblock %}
 </body>
