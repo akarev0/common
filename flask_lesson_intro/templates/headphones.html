@@ -6,15 +6,6 @@
 </head>
 <body>
 {% block main_info%}
-<h1 align="left">
-    <p>
-        {% for i in data%}
-        {% if i['title'] == "Headphones"%}
-        {{i['title']}}
-        {% endif%}
-        {% endfor%}
-    </p>
-</h1>
 <div id="images">
     <img src="{{url_for('static', filename='headphones.png')}}" usemap="#image-map" width="650px" height="360px">
 </div>
@@ -22,7 +13,9 @@
     <p>
         {% for i in data%}
         {% if i['title'] == "Headphones"%}
-        {{i['text']}}
+    <p>{{i['title']}}</p>
+    {{i['text']}}
+    <p>words in this text: {{i['text'] | wordcount()}}
         {% endif%}
         {% endfor%}
     </p>
