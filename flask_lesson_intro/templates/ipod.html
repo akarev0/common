@@ -11,8 +11,7 @@
     <img src="{{url_for('static', filename='ipod.png')}}" usemap="#image-map" width="650px" height="360px">
 </div>
 <div class="col-md-12 mt-md-0 mt-4  ">
-    <p>{{funk_title_and_content("iPod")}}</p>
-    <p>This text have {{funk_title_and_content("iPod") | wordcount()}} words</p>
+    <p>{{funk_title_and_content(data, "iPod")}}</p>
 </div>
 {% endblock%}
 </body>

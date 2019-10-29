@@ -11,9 +11,7 @@
     <img src="{{url_for('static', filename='coffee_maker.png')}}" usemap="#image-map" width="650px" height="360px">
 </div>
 <div class="col-md-12 mt-md-0 mt-4  ">
-    <p>{{funk_title_and_content("Coffeemaker")}}</p>
-    <p>This text have {{funk_title_and_content("Coffeemaker") | wordcount()}} words</p>
-
+    <p>{{funk_title_and_content(data, "Coffeemaker")}}</p>
 </div>
 {% endblock%}
 </body>

@@ -11,8 +11,7 @@
     <img src="{{url_for('static', filename='alarm_clock.png')}}" usemap="#image-map" width="650px" height="360px">
 </div>
 <div class="col-md-12 mt-md-0 mt-4">
-    <p>{{funk_title_and_content("Alarm clock")}}</p>
-    <p>This text have {{funk_title_and_content("Alarm clock") | wordcount()}} words</p>
+    <p>{{funk_title_and_content(data, "Alarm clock")}}</p>
 </div>
 {% endblock %}
 </body>
