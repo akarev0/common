@@ -1,0 +1,7 @@
+{%macro funk_return_page_content(data, value)%}
+{% for products in data%}
+{% if product["id"] == value%}
+<h1>name: {{product["name"]}}</h1>
+<h1>price: {{product["price"]}}</h1>
+<h1>About: {{product["description"]}}</h1>
+<h1>{{product["img_name"]}}</h1>
