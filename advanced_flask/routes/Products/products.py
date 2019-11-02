@@ -1,12 +1,13 @@
 from flask import Blueprint, render_template
 
-from routes.utils import get_products_data
+from routes.Products.utils import get_products_data
 
 
-products = Blueprint('products', __name__, template_folder='template', static_folder='static')
+products = Blueprint('products', __name__, template_folder='template', static_folder='static',
+                     static_url_path='/static')
 
 
-@products.route('/products')
+@products.route('/products', methods=['GET', 'POST'])
 def get_products():
     return render_template('all_products.html')
 

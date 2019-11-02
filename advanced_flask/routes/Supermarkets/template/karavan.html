@@ -1,0 +1,6 @@
+{%extends "base.html" %}
+{% from "macros_s.html" import funk_return_page_content %}
+{% block main_info%}
+{{funk_return_page_content(data, '1', url_for('static', filename='karavan.png'))}}
+{% endblock %}
+

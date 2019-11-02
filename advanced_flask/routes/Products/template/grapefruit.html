@@ -1,5 +1,5 @@
 {%extends "base.html"%}
 {% from "macros.html" import funk_return_page_content%}
 {% block main_info%}
-{{funk_return_page_content(data, '1', "apple.png")}}
+{{funk_return_page_content(data, '4', url_for('static', filename='grapefruit.png'))}}
 {% endblock %}

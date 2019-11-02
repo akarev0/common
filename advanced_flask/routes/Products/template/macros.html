@@ -2,7 +2,7 @@
 {% for products in data%}
 {% if products["id"] == value %}
 <div id="images">
-    <img src="url_for('static', filename={{img_src}})" width="650px" height="360px">
+    <img src="{{img_src}}" width="650px" height="360px">
 </div>
 <h1>name: {{products["name"]}}</h1>
 <h1>price: {{products["price"]}}</h1>
