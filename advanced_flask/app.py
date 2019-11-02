@@ -1,10 +1,12 @@
 from flask import Flask, render_template
 
-from blueprint.main import products
+from blueprint_products.products_main import products
+from blueprint_supermarkets.supermarkets_main import supermarkets
 
 app = Flask(__name__)
 
 app.register_blueprint(products)
+app.register_blueprint(supermarkets)
 
 
 @app.route('/home')

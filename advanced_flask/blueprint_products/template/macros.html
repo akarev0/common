@@ -1,0 +1,12 @@
+{%macro funk_return_page_content(data, value, img_src)%}
+{% for products in data%}
+{% if products["id"] == value %}
+<div id="images">
+    <img src="url_for('static', filename={{img_src}})" width="650px" height="360px">
+</div>
+<h1>name: {{products["name"]}}</h1>
+<h1>price: {{products["price"]}}</h1>
+<h1>About: {{products["description"]}}</h1>
+{% endif%}
+{% endfor%}
+{% endmacro%}

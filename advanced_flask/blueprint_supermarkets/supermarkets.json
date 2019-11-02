@@ -1,0 +1,33 @@
+[
+{
+	"id": "1",
+	"name": "Karavan",
+	"location": "Kharkiv",
+	"img_name": ""
+},
+{
+	"id": "2",
+	"name": "MOCT-city",
+	"location": "Dnipro",
+	"img_name": ""
+},
+{
+	"id": "3",
+	"name": "Plaza",
+	"location": "Kiev",
+	"img_name": ""
+},
+{
+	"id": "4",
+	"name": "Pravda",
+	"location": "Lviv",
+	"img_name": ""
+},
+{
+	"id": "5",
+	"name": "Fabrika",
+	"location": "Kherson",
+	"img_name": ""
+}
+]
+
