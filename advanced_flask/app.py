@@ -1,7 +1,7 @@
 from flask import Flask, render_template
 
-from blueprint_products.products_main import products
-from blueprint_supermarkets.supermarkets_main import supermarkets
+from routes.products import products
+from routes.supermarkets import supermarkets
 
 app = Flask(__name__)
 
