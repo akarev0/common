@@ -1,9 +1,9 @@
 {% macro funk_title_and_content(data,value)%}
-{% for element in data%}
-{% if element['title'] == value %}
-<h1>{{element['title']}}</h1>
-<p>{{element['text']}}</p>
-<p>This text have {{element['text'] | wordcount()}} words</p>
-{% endif %}
-{% endfor %}
+    {% for element in data%}
+        {% if element['title'] == value %}
+            <h1>{{element['title']}}</h1>
+            <p>{{element['text']}}</p>
+            <p>This text have {{element['text'] | wordcount()}} words</p>
+        {% endif %}
+    {% endfor %}
 {% endmacro %}

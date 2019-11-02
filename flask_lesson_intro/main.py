@@ -1,5 +1,6 @@
 from flask import Flask, render_template
-from flask_lesson_intro.utils import get_data
+
+from utils import get_data
 
 
 app = Flask(__name__)
