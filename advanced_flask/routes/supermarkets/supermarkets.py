@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template
 
-from routes.Supermarkets.utils import get_supermarkets_data
+from routes.supermarkets.utils import get_supermarkets_data
 
 supermarkets = Blueprint('supermarkets', __name__, template_folder='template')
 

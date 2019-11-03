@@ -1,0 +1,5 @@
+{%extends "base.html" %}
+{% from "macros.html" import funk_return_page_content %}
+    {% block main_info %}
+        {{funk_return_page_content(data, '2', url_for('static', filename='moct-city.png'))}}
+    {% endblock %}
