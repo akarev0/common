@@ -5,7 +5,7 @@ from routes.supermarkets.utils import get_supermarkets_data
 supermarkets = Blueprint('supermarkets', __name__, template_folder='template')
 
 
-@supermarkets.route('/supermarkets')
+@supermarkets.route('/supermarket')
 def get_supermarkets():
     return render_template('all_supermarkets.html')
 

@@ -1,39 +1,14 @@
 {%extends "base.html"%}
 {% block main_info %}
 <h1 align="center">Add new product</h1>
-<form align="center" action="" method="post" novalidate>
-    {{ form.hidden_tag() }}
-    <p>
-        {{ form.new_product_name.label }}<br>
-        {{ form.new_product_name(size=20) }}
-        {% for error in form.new_product_name.errors %}
-        <span style="color: red;">[{{ error }}]</span>
-        {% endfor %}
-    </p>
-    <p>
-        {{ form.new_product_description.label }}<br>
-        {{ form.new_product_description(size=20) }}
-        {% for error in form.new_product_description.errors %}
-        <span style="color: red;">[{{ error }}]</span>
-        {% endfor %}
-
-    </p>
-    <p>
-        {{ form.new_product_src.label }}<br>
-        {{ form.new_product_src(size=20) }}
-        {% for error in form.new_product_src.errors %}
-        <span style="color: red;">[{{ error }}]</span>
-        {% endfor %}
-
-    </p>
-    <p>
-        {{ form.new_product_price.label }}<br>
-        {{ form.new_product_price(size=20) }}
-        {% for error in form.new_product_price.errors %}
-        <span style="color: red;">[{{ error }}]</span>
-        {% endfor %}
-
-    </p>
-    <p>{{ form.submit() }}</p>
+<form method="POST" enctype="multipart/form-data">
+            {{ form.csrf_token }}
+    <ul>
+        <li>{{ form.new_product_name }}</li>
+        <li>{{ form.new_product_description }}</li>
+        <li>{{ form.new_product_image }}</li>
+        <li>{{ form.new_product_price }}</li>
+        <li>{{ form.submit() }}</li>
+    </ul>
 </form>
 {% endblock %}
