@@ -1,6 +1,6 @@
 import os
 
-from flask import Blueprint, render_template, request, flash, redirect, url_for
+from flask import Blueprint, render_template, request, redirect, url_for
 from flask_wtf import FlaskForm
 from flask_wtf.file import FileRequired
 from wtforms import StringField, SubmitField, FileField
@@ -16,35 +16,23 @@ def get_products():
     return render_template('all_products.html')
 
 
-@products.route('/apple')
-def get_apple():
-    return render_template('apple.html', data=get_products_data())
-
-
-@products.route('/chocolate')
-def get_chocolate():
-    return render_template('chocolate.html', data=get_products_data())
-
-
-@products.route('/egg')
-def get_egg():
-    return render_template('egg.html', data=get_products_data())
-
-
-@products.route('/grapefruit')
-def get_grapefruit():
-    return render_template('grapefruit.html', data=get_products_data())
-
-
-@products.route('/oatmeal')
-def get_oatmeal():
-    return render_template('oatmeal.html', data=get_products_data())
+@products.route('/product/<value>')
+def products_page(value):
+    for product in get_products_data():
+        if product.get('id') == value:
+            name = product.get('name')
+            price = product.get('price')
+            desc = product.get('description')
+            image = product.get('img_name')
+            return render_template('product_page.html', name=name, price=price, desc=desc, image=image)
 
 
 @products.route('/add_product', methods=['GET', 'POST'])
 def add_product():
     form = AddNewProduct(request.form)
-    print(request.files)
+    name = form.new_product_name.data
+    desc = form.new_product_description.data
+    price = form.new_product_price.data
     if form.validate_on_submit():
         if request.method == 'POST':
             data = request.files['data']

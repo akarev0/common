@@ -2,7 +2,7 @@
   {
     "id": "1",
     "name": "apple",
-    "description": "It's red and yummy",
+    "description": "red and yummy",
     "img_name": "apple.png",
     "price": "10"
   },

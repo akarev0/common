@@ -1,22 +1,21 @@
 {% extends "base.html" %}
-
 {% block main_info%}
 <div>
     <ul>
         <li>
-            <a href="{{url_for('products.get_apple')}}">Apple</a>
+            <a href="{{url_for('products.products_page', value='1')}}">Apple</a>
         </li>
         <li>
-            <a href="{{url_for('products.get_chocolate')}}">Chocolate</a>
+            <a href="{{url_for('products.products_page', value='2')}}">Chocolate</a>
         </li>
         <li>
-            <a href="{{url_for('products.get_egg')}}">Egg</a>
+            <a href="{{url_for('products.products_page', value='3')}}">Egg</a>
         </li>
         <li>
-            <a href="{{url_for('products.get_grapefruit')}}">Grapefruit</a>
+            <a href="{{url_for('products.products_page', value='4')}}">Grapefruit</a>
         </li>
         <li>
-            <a href="{{url_for('products.get_oatmeal')}}">Oatmeal</a>
+            <a href="{{url_for('products.products_page', value='5')}}">Oatmeal</a>
         </li>
         <li>
             <a href="{{url_for('products.add_product')}}">Want to add new product?</a>

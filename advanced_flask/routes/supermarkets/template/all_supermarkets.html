@@ -1,22 +1,21 @@
 {% extends "base.html" %}
-
 {% block main_info%}
 <div>
-    <ul>
+    <ul>>
         <li>
-            <a href="{{url_for('supermarkets.get_karavan_page')}}">Karavan</a>
+            <a href="{{url_for('supermarkets.supermarket_page', value='1')}}">Karavan</a>
         </li>
         <li>
-            <a href="{{url_for('supermarkets.get_moct_city_page')}}">MOCT-city</a>
+            <a href="{{url_for('supermarkets.supermarket_page', value='2')}}">MOCT-city</a>
         </li>
         <li>
-            <a href="{{url_for('supermarkets.get_plaza_page')}}">Plaza</a>
+            <a href="{{url_for('supermarkets.supermarket_page', value='3')}}">Plaza</a>
         </li>
         <li>
-            <a href="{{url_for('supermarkets.get_pravda_page')}}">Pravda</a>
+            <a href="{{url_for('supermarkets.supermarket_page', value='4')}}">Pravda</a>
         </li>
         <li>
-            <a href="{{url_for('supermarkets.get_fabrika_page')}}">Fabrika</a>
+            <a href="{{url_for('supermarkets.supermarket_page', value='5')}}">Fabrika</a>
         </li>
     </ul>
 </div>

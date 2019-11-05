@@ -10,7 +10,7 @@ app.register_blueprint(products)
 app.register_blueprint(supermarkets)
 
 
-@app.route('/home')
+@app.route('/')
 def get_home_page():
     return render_template('home.html')
 

@@ -10,26 +10,11 @@ def get_supermarkets():
     return render_template('all_supermarkets.html')
 
 
-@supermarkets.route('/karavan')
-def get_karavan_page():
-    return render_template('karavan.html', data=get_supermarkets_data())
-
-
-@supermarkets.route('/moct-city')
-def get_moct_city_page():
-    return render_template('moct-city.html', data=get_supermarkets_data())
-
-
-@supermarkets.route('/plaza')
-def get_plaza_page():
-    return render_template('plaza.html', data=get_supermarkets_data())
-
-
-@supermarkets.route('/pravda')
-def get_pravda_page():
-    return render_template('pravda.html', data=get_supermarkets_data())
-
-
-@supermarkets.route('/fabrika')
-def get_fabrika_page():
-    return render_template('fabrika.html', data=get_supermarkets_data())
+@supermarkets.route('/supermarket/<value>')
+def supermarket_page(value):
+    for supermarket in get_supermarkets_data():
+        if supermarket.get('id') == value:
+            name = supermarket.get('name')
+            location = supermarket.get('location')
+            image = supermarket.get('img_name')
+            return render_template('supermarket_page.html', name=name, location=location, image=image)
