@@ -1,12 +1,11 @@
+import json
 import os
 
-from flask import Blueprint, render_template, request, redirect, url_for
-from flask_wtf import FlaskForm
-from flask_wtf.file import FileRequired
-from wtforms import StringField, SubmitField, FileField
-from wtforms.validators import DataRequired
+from flask import Blueprint, render_template, request, redirect, url_for, jsonify
 
-from routes.products.utils import get_products_data
+from routes.products.form import AddNewProduct
+from routes.products.utils import get_products_data, get_new_id, add_products_data
+
 
 products = Blueprint('products', __name__, template_folder='template', static_folder='static')
 
@@ -29,22 +28,24 @@ def products_page(value):
 
 @products.route('/add_product', methods=['GET', 'POST'])
 def add_product():
-    form = AddNewProduct(request.form)
-    name = form.new_product_name.data
-    desc = form.new_product_description.data
-    price = form.new_product_price.data
+    form = AddNewProduct()
     if form.validate_on_submit():
         if request.method == 'POST':
-            data = request.files['data']
+            data = request.files['new_product_image']
             path = os.path.join('static', data.filename)
             data.save(path)
-        return redirect(url_for('get_products'))
+            name = form.new_product_name.data
+            desc = form.new_product_description.data
+            image = form.new_product_image.data
+            price = form.new_product_price.data
+            new_id = get_new_id('routes/products/products.json')
+            result = {'id': new_id, 'name': name, 'desc': desc, "img_name": image.filename, "price": price}
+            all_products = get_products_data()
+            all_products.append(result)
+            add_products_data('routes/products/products.json', all_products)
+        return redirect(url_for('products.get_products'))
     return render_template('add_product.html', title='Add product', form=form)
 
 
-class AddNewProduct(FlaskForm):
-    new_product_name = StringField(validators=[DataRequired()])
-    new_product_description = StringField(validators=[DataRequired()])
-    new_product_image = FileField(validators=[FileRequired()])
-    new_product_price = StringField(validators=[DataRequired()])
-    submit = SubmitField('Send')
+
+
