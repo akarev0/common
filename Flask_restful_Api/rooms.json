@@ -1,0 +1,26 @@
+[
+  {
+    "number": "105",
+    "level": "first",
+    "status": "economy",
+    "Price": "150"
+  },
+  {
+    "number": "223",
+    "level": "second",
+    "status": "standard",
+    "Price": "250"
+  },
+  {
+    "number": "311",
+    "level": "third",
+    "status": "luxury",
+    "Price": "450"
+  },
+  {
+    "number": "422",
+    "level": "forth",
+    "status": "penthouse",
+    "Price": "1000"
+  }
+]

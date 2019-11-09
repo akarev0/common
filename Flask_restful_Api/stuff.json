@@ -1,0 +1,26 @@
+[
+  {
+    "name": "James",
+    "PassportID": "MR229561",
+    "Position": "Director",
+    "Salary": "15000"
+  },
+  {
+    "name": "Lars",
+    "PassportID": "MR223561",
+    "Position": "Manager",
+    "Salary": "13000"
+  },
+  {
+    "name": "Kirk",
+    "PassportID": "MR228745",
+    "Position": "Cock",
+    "Salary": "11000"
+  },
+  {
+    "name": "Robert",
+    "PassportID": "MR123561",
+    "Position": "Chambermaid",
+    "Salary": "9000"
+  }
+]
