@@ -1,12 +1,16 @@
 {%extends "base.html"%}
 {% block main_info %}
-<h1 align="center">Add new product</h1>
+<h1>Add new product</h1>
 <form method="POST" enctype="multipart/form-data">
-            {{ form.csrf_token }}
+    {{ form.csrf_token }}
     <ul>
+        {{ form.new_product_name.label(size=14) }}
         <li>{{ form.new_product_name }}</li>
+        {{ form.new_product_description.label(size=14) }}
         <li>{{ form.new_product_description }}</li>
+        {{ form.new_product_image.label(size=14) }}
         <li>{{ form.new_product_image }}</li>
+        {{ form.new_product_price.label(size=14) }}
         <li>{{ form.new_product_price }}</li>
         <li>{{ form.submit() }}</li>
     </ul>

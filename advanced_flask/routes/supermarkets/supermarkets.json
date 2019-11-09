@@ -1,33 +1,38 @@
 [
-{
-	"id": "1",
-	"name": "Karavan",
-	"location": "Kharkiv",
-	"img_name": "karavan.png"
-},
-{
-	"id": "2",
-	"name": "MOCT-city",
-	"location": "Dnipro",
-	"img_name": "moct-city.png"
-},
-{
-	"id": "3",
-	"name": "Plaza",
-	"location": "Kiev",
-	"img_name": "plaza.png"
-},
-{
-	"id": "4",
-	"name": "Pravda",
-	"location": "Lviv",
-	"img_name": "pravda.png"
-},
-{
-	"id": "5",
-	"name": "Fabrika",
-	"location": "Kherson",
-	"img_name": "fabrika.png"
-}
+    {
+        "id": "1",
+        "name": "Karavan",
+        "location": "Kharkiv",
+        "img_name": "karavan.png"
+    },
+    {
+        "id": "2",
+        "name": "MOCT-city",
+        "location": "Dnipro",
+        "img_name": "moct-city.png"
+    },
+    {
+        "id": "3",
+        "name": "Plaza",
+        "location": "Kiev",
+        "img_name": "plaza.png"
+    },
+    {
+        "id": "4",
+        "name": "Pravda",
+        "location": "Lviv",
+        "img_name": "pravda.png"
+    },
+    {
+        "id": "5",
+        "name": "Fabrika",
+        "location": "Kherson",
+        "img_name": "fabrika.png"
+    },
+    {
+        "id": "6",
+        "name": "Apollo",
+        "location": "Dnepr",
+        "img_name": "apollo.png"
+    }
 ]
-

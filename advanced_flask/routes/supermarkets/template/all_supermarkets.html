@@ -1,22 +1,15 @@
 {% extends "base.html" %}
 {% block main_info%}
-<div>
-    <ul>>
-        <li>
-            <a href="{{url_for('supermarkets.supermarket_page', value='1')}}">Karavan</a>
-        </li>
-        <li>
-            <a href="{{url_for('supermarkets.supermarket_page', value='2')}}">MOCT-city</a>
-        </li>
-        <li>
-            <a href="{{url_for('supermarkets.supermarket_page', value='3')}}">Plaza</a>
-        </li>
-        <li>
-            <a href="{{url_for('supermarkets.supermarket_page', value='4')}}">Pravda</a>
-        </li>
-        <li>
-            <a href="{{url_for('supermarkets.supermarket_page', value='5')}}">Fabrika</a>
-        </li>
-    </ul>
-</div>
+    {% for item in data %}
+    <div>
+        <ul>
+            <li>
+                <a href="{{url_for('supermarkets.supermarket_page', value=item['id'] )}}">{{ item['name'].title() }}</a>
+            </li>
+        </ul>
+    </div>
+    {% endfor %}
+            <li>
+                <a href="{{url_for('supermarkets.add_supermarket')}}">Want to add new supermarket?</a>
+            </li>
 {% endblock %}

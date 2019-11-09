@@ -1,7 +1,7 @@
 {%extends "base.html"%}
 {% block main_info %}
 <div>
-    <img src="{{url_for('static', filename=image)}}" width="650px" height="360px">
+    <img src="{{url_for('products.static', filename=image)}}" width="650px" height="360px">
 </div>
 <h1>It's: {{ name }}</h1>
 <h2>And it's: {{ desc }}</h2>

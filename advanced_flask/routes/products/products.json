@@ -35,17 +35,10 @@
         "price": "8"
     },
     {
-        "id": 6,
-        "name": "me",
-        "desc": "also_me",
+        "id": "6",
+        "name": "potato",
+        "desc": "not so yummy",
         "img_name": "potato.png",
-        "price": "8"
-    },
-    {
-        "id": 7,
-        "name": "me",
-        "desc": "also_me",
-        "img_name": "potato.png",
-        "price": "8"
+        "price": "7"
     }
 ]

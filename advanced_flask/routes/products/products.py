@@ -1,18 +1,17 @@
-import json
 import os
 
-from flask import Blueprint, render_template, request, redirect, url_for, jsonify
+from flask import Blueprint, render_template, request, redirect, url_for, flash
 
 from routes.products.form import AddNewProduct
 from routes.products.utils import get_products_data, get_new_id, add_products_data
 
-
-products = Blueprint('products', __name__, template_folder='template', static_folder='static')
+products = Blueprint('products', __name__, template_folder='template', static_folder='static',
+                     static_url_path='/products/static')
 
 
 @products.route('/product', methods=['GET', 'POST'])
 def get_products():
-    return render_template('all_products.html')
+    return render_template('all_products.html', data=get_products_data())
 
 
 @products.route('/product/<value>')
@@ -24,6 +23,7 @@ def products_page(value):
             desc = product.get('description')
             image = product.get('img_name')
             return render_template('product_page.html', name=name, price=price, desc=desc, image=image)
+    return render_template('product_page.html')
 
 
 @products.route('/add_product', methods=['GET', 'POST'])
@@ -32,7 +32,7 @@ def add_product():
     if form.validate_on_submit():
         if request.method == 'POST':
             data = request.files['new_product_image']
-            path = os.path.join('static', data.filename)
+            path = os.path.join('routes/products/static', data.filename)
             data.save(path)
             name = form.new_product_name.data
             desc = form.new_product_description.data
@@ -43,6 +43,7 @@ def add_product():
             all_products = get_products_data()
             all_products.append(result)
             add_products_data('routes/products/products.json', all_products)
+            flash('Thank you! New product {} was add to our list'.format(name))
         return redirect(url_for('products.get_products'))
     return render_template('add_product.html', title='Add product', form=form)
 
