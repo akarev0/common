@@ -25,4 +25,4 @@ stuff = [Stuff("James", "MR229561", "Director", 15000), Stuff("Lars", "MR223561"
          Stuff("Kirk", "MR228745", "Cock", 11000), Stuff("Robert", "MR123561", "Chambermaid", 9000)]
 
 
-api.add_resource(Stuff, '/stuff', '/stuff/<value>')
+api.add_resource(StuffEdit, '/stuff', '/stuff/<value>')

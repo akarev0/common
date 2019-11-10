@@ -1,7 +1,6 @@
-from flask_restful import Resource
 
 
-class Stuff(Resource):
+class Stuff:
 
     def __init__(self, name, passport_id, position, salary):
         self.name = name
