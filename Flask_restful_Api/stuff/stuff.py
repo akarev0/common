@@ -1,7 +1,7 @@
 from flask import request
-from flask_restful import Resource, fields, marshal_with, reqparse
+from flask_restful import Resource, fields, marshal_with
 
-from stuff.resource import Stuff
+from stuff.resource import stuff
 
 stuff_structure = {
     "name": fields.String,
@@ -21,8 +21,6 @@ class StuffChange(Resource):
 
     def patch(self, value):
         data = request.args
-        print(data.get('key'))
-        print(data.get('value'))
         for person in stuff:
             if person.name == value:
                 if data.get('key') == "passport_id":
@@ -31,13 +29,10 @@ class StuffChange(Resource):
                     person.position = data.get('value')
                 if data.get('key') == "salary":
                     person.salary = data.get('value')
-            return "ok"
+        return "updated"
 
     def delete(self, value):
         for person in stuff:
             if person.name == value:
                 stuff.remove(person)
-
-
-stuff = [Stuff("James", "MR229561", "Director", 15000), Stuff("Lars", "MR223561", "Manager", 13000),
-         Stuff("Kirk", "MR228745", "Cock", 11000), Stuff("Robert", "MR123561", "Chambermaid", 9000)]
+        return "deleted"
