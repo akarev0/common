@@ -11,10 +11,18 @@ products = Blueprint('products', __name__, template_folder='template', static_fo
 
 @products.route('/product', methods=['GET', 'POST'])
 def get_products():
-    return render_template('all_products.html', data=get_products_data())
+    data = request.args
+    filtered_list = []
+    if data:
+        for product in get_products_data():
+            if product.get('price') == data.get('price'):
+                filtered_list.append(product['name'])
+        return render_template('price_filter.html', data=filtered_list)
+    else:
+        return render_template('all_products.html', data=get_products_data())
 
 
-@products.route('/product/<int:value>')
+@products.route('/product/<string:value>')
 def products_page(value):
     for product in get_products_data():
         if product.get('id') == value:

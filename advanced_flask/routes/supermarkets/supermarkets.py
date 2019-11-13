@@ -12,10 +12,18 @@ supermarkets = Blueprint('supermarkets', __name__, template_folder='template', s
 
 @supermarkets.route('/supermarket')
 def get_supermarkets():
-    return render_template('all_supermarkets.html', data=get_supermarkets_data())
+    data = request.args
+    location_filter = []
+    if data:
+        for supermarket in get_supermarkets_data():
+            if supermarket.get('location') == data.get('location'):
+                location_filter.append(supermarket)
+        return render_template('location_filter.html', data=location_filter)
+    else:
+        return render_template('all_supermarkets.html', data=get_supermarkets_data())
 
 
-@supermarkets.route('/supermarket/<int:value>')
+@supermarkets.route('/supermarket/<string:value>')
 def supermarket_page(value):
     for supermarket in get_supermarkets_data():
         if supermarket.get('id') == value:

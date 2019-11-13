@@ -25,7 +25,7 @@
         "name": "grapefruit",
         "description": "Never taste that one",
         "img_name": "grapefruit.png",
-        "price": "13"
+        "price": "10"
     },
     {
         "id": "5",
@@ -39,13 +39,6 @@
         "name": "potato",
         "desc": "not so yummy",
         "img_name": "potato.png",
-        "price": "7"
-    },
-    {
-        "id": "7",
-        "name": "potato",
-        "desc": "not so yummy",
-        "img_name": "apollo.png",
-        "price": "5.0"
+        "price": "10"
     }
 ]
