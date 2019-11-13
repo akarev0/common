@@ -15,7 +15,7 @@ def get_supermarkets():
     return render_template('all_supermarkets.html', data=get_supermarkets_data())
 
 
-@supermarkets.route('/supermarket/<value>')
+@supermarkets.route('/supermarket/<int:value>')
 def supermarket_page(value):
     for supermarket in get_supermarkets_data():
         if supermarket.get('id') == value:

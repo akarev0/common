@@ -40,5 +40,12 @@
         "desc": "not so yummy",
         "img_name": "potato.png",
         "price": "7"
+    },
+    {
+        "id": "7",
+        "name": "potato",
+        "desc": "not so yummy",
+        "img_name": "apollo.png",
+        "price": "5.0"
     }
 ]

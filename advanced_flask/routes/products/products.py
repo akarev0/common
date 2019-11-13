@@ -14,7 +14,7 @@ def get_products():
     return render_template('all_products.html', data=get_products_data())
 
 
-@products.route('/product/<value>')
+@products.route('/product/<int:value>')
 def products_page(value):
     for product in get_products_data():
         if product.get('id') == value:
