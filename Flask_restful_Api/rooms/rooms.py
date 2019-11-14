@@ -1,15 +1,10 @@
+import json
+
 from flask import request
-from flask_restful import Resource, fields, marshal_with, reqparse
+from flask_restful import Resource, marshal_with, reqparse
 
 from rooms.resource import rooms
-
-
-rooms_structure = {
-    "number": fields.Integer,
-    "level": fields.String,
-    "status": fields.String,
-    "price": fields.Integer
-}
+from rooms.structure import rooms_structure
 
 parser = reqparse.RequestParser()
 parser.add_argument("filter")
@@ -17,13 +12,21 @@ parser.add_argument("filter")
 
 class RoomsChange(Resource):
     @marshal_with(rooms_structure)
-    def get(self, value):
+    def get(self, value=None):
         args = parser.parse_args()
-        print(args)
-        for room in rooms:
-            if room.number == value:
-                return room
-        return rooms
+        rooms_filter = []
+        if value:
+            if args.get('filter'):
+                for room in rooms:
+                    if room.status == args.get('filter'):
+                        rooms_filter.append(room)
+                return rooms_filter
+            else:
+                for room in rooms:
+                    if room.number == value:
+                        return room
+        else:
+            return rooms
 
     def patch(self, value):
         data = request.args
@@ -35,7 +38,12 @@ class RoomsChange(Resource):
                     room.status = data.get('value')
                 if data.get('key') == "price":
                     room.price = data.get('value')
-        return "updated"
+        return "Successfully updated"
+
+    def post(self):
+        data = json.loads(request.data)
+        rooms.append(data)
+        return "New room was successfully add"
 
     def delete(self, value):
         for room in rooms:

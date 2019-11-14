@@ -1,27 +1,21 @@
 from flask import request
-from flask_restful import Resource, fields, marshal_with
+from flask_restful import Resource, marshal_with
 
-from stuff.resource import stuff
-
-stuff_structure = {
-    "name": fields.String,
-    "passport_id": fields.String,
-    "position": fields.String,
-    "salary": fields.Integer
-}
+from stuff.resource import staff
+from stuff.structure import staff_structure
 
 
-class StuffChange(Resource):
-    @marshal_with(stuff_structure)
-    def get(self, value):
-        for person in stuff:
+class StaffChange(Resource):
+    @marshal_with(staff_structure)
+    def get(self, value=None):
+        for person in staff:
             if person.name == value:
                 return person
-        return stuff
+        return staff
 
     def patch(self, value):
         data = request.args
-        for person in stuff:
+        for person in staff:
             if person.name == value:
                 if data.get('key') == "passport_id":
                     person.passport_id = data.get('value')
@@ -32,7 +26,7 @@ class StuffChange(Resource):
         return "updated"
 
     def delete(self, value):
-        for person in stuff:
+        for person in staff:
             if person.name == value:
-                stuff.remove(person)
+                staff.remove(person)
         return "deleted"
