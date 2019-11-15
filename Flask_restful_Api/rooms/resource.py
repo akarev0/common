@@ -1,10 +1,10 @@
-class Rooms:
-    def __init__(self, number, level, status, price):
-        self.number = number
-        self.level = level
-        self.status = status
-        self.price = price
+from main import db
 
+class RoomsModel(db.Model):
+    __tablename__ = "rooms_table"
 
-rooms = [Rooms("105", "first", "available", "150"), Rooms("232", "second", "closed", "250"),
-         Rooms("311", "third", "closed", "300"), Rooms("422", "fourth", "available", "600")]
+    number = db.Column(db.Integer, primary_key=True)
+    level = db.Column(db.String, unique=True, nullable=False)
+    status = db.Column(db.String, unique=True, nullable=False)
+    price = db.Column(db.Integer, unique=True, nullable=False)
+    tenants_id = db.Column(db.Integer, unique=True, nullable=False)
