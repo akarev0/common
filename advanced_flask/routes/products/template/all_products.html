@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block main_info%}
+    {% for item in data %}
+    <div>
+        <ul>
+            <li>
+                <a href="{{url_for('products.products_page', value=item['id'] )}}">{{ item['name'].title() }}</a>
+            </li>
+        </ul>
+    </div>
+    {% endfor %}
+            <li>
+                <a href="{{url_for('products.add_product')}}">Want to add new product?</a>
+            </li>
+{% endblock %}

@@ -1,0 +1,16 @@
+{%extends "base.html"%}
+{% block main_info %}
+<h1>Add new supermarket</h1>
+<form method="POST" enctype="multipart/form-data">
+            {{ form.csrf_token }}
+    <ul>
+        {{ form.new_supermarket_name.label(size=14) }}
+        <li>{{ form.new_supermarket_name }}</li>
+        {{ form.new_supermarket_location.label(size=14) }}
+        <li>{{ form.new_supermarket_location }}</li>
+        {{ form.new_supermarket_image.label(size=14) }}
+        <li>{{ form.new_supermarket_image }}</li>
+        <li>{{ form.submit() }}</li>
+    </ul>
+</form>
+{% endblock %}
