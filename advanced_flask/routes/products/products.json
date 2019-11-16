@@ -39,6 +39,6 @@
         "name": "potato",
         "desc": "not so yummy",
         "img_name": "potato.png",
-        "price": "10"
+        "price": 5.0
     }
 ]

@@ -34,11 +34,5 @@
         "name": "Apollo",
         "location": "Dnipro",
         "img_name": "apollo.png"
-    },
-    {
-        "id": "7",
-        "name": "Globus",
-        "location": "Kyiv",
-        "img_name": "globus.jpeg"
     }
 ]

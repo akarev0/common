@@ -8,23 +8,25 @@ from routes.products.utils import get_products_data, get_new_id, add_products_da
 products = Blueprint('products', __name__, template_folder='template', static_folder='static',
                      static_url_path='/products/static')
 
+products_data_path = 'routes/products/products.json'
+
 
 @products.route('/product', methods=['GET', 'POST'])
 def get_products():
     data = request.args
     filtered_list = []
     if data:
-        for product in get_products_data():
+        for product in get_products_data(products_data_path):
             if product.get('price') == data.get('price'):
                 filtered_list.append(product['name'])
         return render_template('price_filter.html', data=filtered_list)
     else:
-        return render_template('all_products.html', data=get_products_data())
+        return render_template('all_products.html', data=get_products_data(products_data_path))
 
 
 @products.route('/product/<string:value>')
 def products_page(value):
-    for product in get_products_data():
+    for product in get_products_data(products_data_path):
         if product.get('id') == value:
             name = product.get('name')
             price = product.get('price')
@@ -46,15 +48,11 @@ def add_product():
             desc = form.new_product_description.data
             image = form.new_product_image.data
             price = form.new_product_price.data
-            new_id = get_new_id('routes/products/products.json')
+            new_id = get_new_id(products_data_path)
             result = {'id': new_id, 'name': name, 'desc': desc, "img_name": image.filename, "price": price}
             all_products = get_products_data()
             all_products.append(result)
-            add_products_data('routes/products/products.json', all_products)
+            add_products_data(products_data_path, all_products)
             flash('Thank you! New product {} was add to our list'.format(name))
         return redirect(url_for('products.get_products'))
     return render_template('add_product.html', title='Add product', form=form)
-
-
-
-
