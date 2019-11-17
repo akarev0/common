@@ -1,8 +1,8 @@
-from app import db
+from db import db
 
 
-class Rooms(db.Model):
-    __tablename__ = "rooms_table"
+class RoomsModel(db.Model):
+    __tablename__ = "rooms"
 
     number = db.Column(db.Integer, primary_key=True)
     level = db.Column(db.String, unique=True, nullable=False)
