@@ -8,5 +8,6 @@ class TenantsModel(db.Model):
     name = db.Column(db.String, unique=True, nullable=False)
     age = db.Column(db.Integer, unique=True, nullable=False)
     sex = db.Column(db.String, unique=True, nullable=False)
-    city = db.Column(db.String, unique=True, nullable=False)
     address = db.Column(db.String, unique=True, nullable=False)
+    city = db.Column(db.String, unique=True, nullable=False)
+    street = db.Column(db.String, unique=True, nullable=False)

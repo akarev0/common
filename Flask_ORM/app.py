@@ -1,4 +1,5 @@
 from flask import Flask
+from flask_migrate import Migrate
 
 from config import run_config
 from create_db import create_db
@@ -13,6 +14,7 @@ def create_app():
     app.config.from_object(run_config())
 
     db.init_app(app)
+    Migrate(app, db)
 
     app.register_blueprint(rooms_bp)
     app.register_blueprint(tenants_bp)
