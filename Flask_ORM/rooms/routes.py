@@ -1,20 +1,46 @@
 import json
 
 from flask import request
-from flask_restful import Resource, marshal_with
+from flask_restful import Resource, marshal_with, reqparse
 
 from db import db
 from models.rooms_model import RoomsModel
 from rooms.rooms_structure import rooms_structure
 
+parser = reqparse.RequestParser()
+parser.add_argument("filter")
+
 
 class Rooms(Resource):
     @marshal_with(rooms_structure)
     def get(self, value=None):
+        rooms_filter = []
+        args = parser.parse_args()
+        data = RoomsModel.query.all()
+        post = RoomsModel.query.get(value)
         if value:
-            data = RoomsModel.query.get(value)
+            if args.get('filter'):
+                for post in data:
+                    if post.status == args.get('filter'):
+                        rooms_filter.append(post)
+                return rooms_filter
+            else:
+                return post
+        else:
             return data
-        return RoomsModel.query.all()
+
+    def put(self, value):
+        data = json.loads(request.data)
+        post = RoomsModel.query.get(value)
+
+        post.number = data.get('number')
+        post.level = data.get('level')
+        post.status = data.get('status')
+        post.price = data.get('price')
+        post.tenant_ID = data.get('tenant_ID')
+        db.session.commit()
+
+        return "Room {} successfully update".format(post.number)
 
     def post(self):
         data = json.loads(request.data)
