@@ -30,7 +30,7 @@ class Tenants(Resource):
         post.age = data.get('age')
         post.sex = data.get('sex')
         post.city = data.get('city')
-        post.street = data.get('street')
+        post.address = data.get('address')
         db.session.commit()
 
         return "Staff {} successfully update".format(post.name)

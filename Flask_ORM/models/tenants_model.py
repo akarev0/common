@@ -9,4 +9,5 @@ class TenantsModel(db.Model):
     age = db.Column(db.Integer, unique=False, nullable=False)
     sex = db.Column(db.String, unique=False, nullable=False)
     city = db.Column(db.String, unique=False, nullable=False)
-    street = db.Column(db.String, unique=False, nullable=False)
+    address = db.Column(db.String, unique=False, nullable=False)
+    tenant_room = db.relationship('RoomsModel', backref='room')

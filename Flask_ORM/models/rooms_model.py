@@ -8,4 +8,5 @@ class RoomsModel(db.Model):
     level = db.Column(db.String)
     status = db.Column(db.String, unique=False)
     price = db.Column(db.Integer)
-    tenant_ID = db.Column(db.Integer)
+    tenant_ID = db.Column(db.Integer, db.ForeignKey('tenants.passport_ID'))
+
