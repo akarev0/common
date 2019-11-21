@@ -5,17 +5,34 @@ db = SQLAlchemy()
 migrate = Migrate()
 
 
-class School(db.Model):
-    pass
-
-
-class Student(db.Model):
-    pass
-
-
-class Teacher(db.Model):
-    pass
-
-
-class Diary(db.Model):
-    pass
+# class School(db.Model):
+#     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+#     name = db.Column(db.String)
+#     students = db.relationship('Student', backref='students')
+#
+#
+# class Student(db.Model):
+#     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+#     name = db.Column(db.String)
+#     school_id = db.Column(db.Column, db.ForeignKey('school.id'),
+#                           nullable=False)
+#
+# student_teacher = db.Table(
+#     'student_teacher',
+#     db.Column('teacher_id', db.Integer, db.ForeignKey('teacher.id')),
+#     db.Column('student_id', db.Integer, db.ForeignKey('student.id'))
+# )
+#
+#
+# class Teacher(db.Model):
+#     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+#     name = db.Column(db.String)
+#     school_id = db.Column(db.Integer, db.ForeignKey('school.id'), nullable=False)
+#     students = db.relationship('Student', secondary=student_teacher, backref='teachers')
+#
+#
+# class Diary(db.Model):
+#     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+#     name = db.Column(db.String)
+#     student_id = db.Column(db.Integer, db.ForeignKey('student.id'), nullable=False)
+#
