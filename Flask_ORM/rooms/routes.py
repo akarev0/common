@@ -47,10 +47,12 @@ class Rooms(Resource):
         new_room = RoomsModel(**data)
         db.session.add(new_room)
         db.session.commit()
+
         return "Room {} successfully added".format(new_room.number)
 
     def delete(self, value):
         post = RoomsModel.query.get(value)
         db.session.delete(post)
         db.session.commit()
+
         return "Room {} successfully deleted".format(post.number)

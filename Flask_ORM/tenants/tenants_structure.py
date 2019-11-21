@@ -6,7 +6,7 @@ address_structure = {
 }
 
 tenants_structure = {
-    "passport_ID": fields.Integer,
+    "passport_ID": fields.String,
     "name": fields.String,
     "age":  fields.Integer,
     "sex": fields.String,
