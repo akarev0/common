@@ -3,7 +3,7 @@ import json
 from flask import request
 from flask_restful import Resource, marshal_with
 
-from models.tenants_model import TenantsModel
+from models.models import TenantsModel
 from tenants.tenants_structure import tenants_structure
 from db import db
 

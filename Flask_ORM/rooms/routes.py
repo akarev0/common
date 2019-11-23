@@ -4,7 +4,7 @@ from flask import request
 from flask_restful import Resource, marshal_with, reqparse
 
 from db import db
-from models.rooms_model import RoomsModel
+from models.models import RoomsModel
 from rooms.rooms_structure import rooms_structure
 
 parser = reqparse.RequestParser()
