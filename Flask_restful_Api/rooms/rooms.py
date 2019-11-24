@@ -30,7 +30,10 @@ class RoomsChange(Resource):
 
     def patch(self, value):
         data = request.args
+        data_dict = {data.get('key'): data.get('value')}
+
         for room in rooms:
+            print(setattr(room, data['key'], data['value']))
             if room.number == value:
                 if data.get('key') == "level":
                     room.level = data.get('value')
@@ -46,8 +49,5 @@ class RoomsChange(Resource):
         return "New room was successfully add"
 
     def delete(self, value):
-        for room in rooms:
-            if room.number == value:
-                rooms.remove(room)
+        [rooms.remove(room) for room in rooms if room.number == value]
         return "Room {} was deleted".format(value)
-
