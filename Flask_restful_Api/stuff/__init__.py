@@ -3,8 +3,8 @@ from flask_restful import Api
 
 from stuff.staff import StaffChange
 
-staff_bp = Blueprint('stuff', __name__)
+staff_bp = Blueprint('staff', __name__)
 api = Api(staff_bp)
 
 
-api.add_resource(StaffChange, '/stuff', '/stuff/<value>')
+api.add_resource(StaffChange, '/staff', '/staff/<person_name>')

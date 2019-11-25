@@ -7,32 +7,23 @@ from tenants.structure import tenants_structure
 
 class TenantsChange(Resource):
     @marshal_with(tenants_structure)
-    def get(self, value=None):
+    def get(self, tenants_name=None):
         for tenant in tenants:
-            if tenant.name == value:
+            if tenant.name == tenants_name:
                 return tenant
         return tenants
 
-    def patch(self, value):
+    def patch(self, tenants_name):
         data = request.args
         for tenant in tenants:
-            if tenant.name == value:
-                if data.get('key') == "passport_id":
-                    tenant.passport_id = data.get('value')
-                if data.get('key') == "age":
-                    tenant.age = data.get('value')
-                if data.get('key') == "age":
-                    tenant.age = data.get('value')
-                if data.get('key') == "sex":
-                    tenant.sex = data.get('value')
-                if data.get('key') == "room_address":
-                    tenant.room_number = data.get('value')
-                if data.get('key') == "address":
-                    tenant.address = data.get('value')
-        return 'Successfully updated'
+            if tenant.name == tenants_name:
+                tenant.passport_id = data.get('passport_id') or tenant.passport_id
+                tenant.age = data.get('age') or tenant.age
+                tenant.sex = data.get('sex') or tenant.sex
+                tenant.room_number = data.get('room_number') or tenant.room_number
+                tenant.address = data.get('address') or tenant.address
+                break
 
-    def delete(self, value):
-        for tenant in tenants:
-            if tenant.name == value:
-                tenants.remove(tenant)
-        return 'Successfully deleted'
+    def delete(self, tenants_name):
+        [tenants.remove(tenant) for tenant in tenants if tenant.name == tenants_name]
+

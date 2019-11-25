@@ -8,4 +8,4 @@ tenants_bp = Blueprint('tenants', __name__)
 api = Api(tenants_bp)
 
 
-api.add_resource(TenantsChange, '/tenants', '/tenants/<value>')
+api.add_resource(TenantsChange, '/tenants', '/tenants/<tenants_name>')

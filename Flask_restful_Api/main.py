@@ -15,10 +15,5 @@ app.register_blueprint(rooms_bp)
 app.register_blueprint(tenants_bp)
 
 
-@app.route('/')
-def home_page():
-    return current_app.config['SECRET_KEY']
-
-
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run()

@@ -8,4 +8,4 @@ rooms_bp = Blueprint('rooms', __name__)
 api = Api(rooms_bp)
 
 
-api.add_resource(RoomsChange, '/rooms', '/rooms/<value>')
+api.add_resource(RoomsChange, '/rooms', '/rooms/<room_number>')

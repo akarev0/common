@@ -7,26 +7,21 @@ from stuff.structure import staff_structure
 
 class StaffChange(Resource):
     @marshal_with(staff_structure)
-    def get(self, value=None):
+    def get(self, person_name=None):
         for person in staff:
-            if person.name == value:
+            if person.name == person_name:
                 return person
         return staff
 
-    def patch(self, value):
+    def patch(self, person_name):
         data = request.args
         for person in staff:
-            if person.name == value:
-                if data.get('key') == "passport_id":
-                    person.passport_id = data.get('value')
-                if data.get('key') == "position":
-                    person.position = data.get('value')
-                if data.get('key') == "salary":
-                    person.salary = data.get('value')
-        return "updated"
+            if person.name == person_name:
+                person.passport_id = data.get('passport_id') or person.passport_id
+                person.position = data.get('position') or person.position
+                person.salary = data.get('salary') or person.salary
+                break
 
-    def delete(self, value):
-        for person in staff:
-            if person.name == value:
-                staff.remove(person)
-        return "deleted"
+    def delete(self, person_name):
+        [staff.remove(person) for person in staff if person.name == person_name]
+
