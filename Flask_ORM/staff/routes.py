@@ -41,17 +41,3 @@ class Staff(Resource):
         return "Staff {} was successfully fired".format(post.name)
 
 
-class StaffRoom(Resource):
-    def get(self):
-        args = staff_room_parser.parse_args(strict=True)
-        staf = StaffModel.query.filter_by(name=args.get('name')).first()
-
-    def post(self):
-        data = json.loads(request.data)
-        staff_name = data.get('staff_name')
-        room_number = data.get('room_number')
-        staff = StaffModel.query.filter_by(name=staff_name).first()
-        room = RoomsModel.query.filter_by(name=room_number).first()
-        staff.rooms.append(room)
-        db.session.commit()
-        return "Successfully added {} to {}".format(staff, room)

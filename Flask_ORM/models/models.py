@@ -3,8 +3,8 @@ from db import db
 
 staff_rooms = db.Table(
     "staff_rooms",
-    db.Column('passport_ID', db.String, db.ForeignKey('StaffModel.passport_ID')),
-    db.Column('number', db.Integer,db.ForeignKey('RoomsModel.number'))
+    db.Column('passport_ID', db.Integer, db.ForeignKey('staff.passport_ID')),
+    db.Column('number', db.Integer, db.ForeignKey('rooms.number'))
 )
 
 
@@ -21,7 +21,7 @@ class RoomsModel(db.Model):
 class StaffModel(db.Model):
     __tablename__ = "staff"
 
-    passport_ID = db.Column(db.String, primary_key=True)
+    passport_ID = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String, unique=True, nullable=True)
     position = db.Column(db.String, unique=True, nullable=True)
     salary = db.Column(db.Integer, unique=False, nullable=True)
