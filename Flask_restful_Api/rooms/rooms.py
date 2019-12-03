@@ -16,16 +16,15 @@ class RoomsChange(Resource):
         args = parser.parse_args()
         rooms_filter = []
         if room_number:
+            for room in rooms:
+                if room.number == room_number:
+                    return room
+        else:
             if args.get('filter'):
                 for room in rooms:
                     if room.status == args.get('filter'):
                         rooms_filter.append(room)
                 return rooms_filter
-            else:
-                for room in rooms:
-                    if room.number == room_number:
-                        return room
-        else:
             return rooms
 
     def patch(self, room_number):
@@ -39,7 +38,13 @@ class RoomsChange(Resource):
 
     def post(self):
         data = json.loads(request.data)
-        rooms.append(data)
+        for room in rooms:
+            if int(room.number) != data.get('number'):
+                if data.get('price') >= 0:
+                    rooms.append(data)
+                else:
+                    raise ValueError("Price cant be negative")
+            raise ValueError("This room is already exist")
 
     def delete(self, room_number):
-        [rooms.remove(room) for room in rooms if room.number == room_number]
+        [rooms.remove(room) for room in rooms if int(room.number) == room_number]

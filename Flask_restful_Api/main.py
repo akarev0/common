@@ -1,4 +1,4 @@
-from flask import Flask, current_app
+from flask import Flask
 
 from config import necessary_config
 from rooms import rooms_bp

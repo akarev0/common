@@ -24,4 +24,3 @@ class StaffChange(Resource):
 
     def delete(self, person_name):
         [staff.remove(person) for person in staff if person.name == person_name]
-
