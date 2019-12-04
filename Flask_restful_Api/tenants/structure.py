@@ -7,6 +7,7 @@ city_structure = {
 
 tenants_structure = {
     "name": fields.String,
+    "passport_id": fields.String,
     "age": fields.Integer,
     "sex": fields.String,
     "room_number": fields.Integer,

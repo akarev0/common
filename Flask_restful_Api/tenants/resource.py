@@ -11,5 +11,7 @@ class Tenants:
         }
 
 
-tenants = [Tenants("Arkadiy", "MM12312", 17, "male", "", 105), Tenants("Kolya", "MM13333", 17, "male", "", 422),
-           Tenants("Stasik", "MN12312", 17, "male", "", 420), Tenants("akarev0", "MM12129", 18, "male", "", 311)]
+tenants = [Tenants("Arkadiy", "MM12312", 17, "male", "", 105),
+           Tenants("Kolya", "MM13333", 17, "male", "", 422),
+           Tenants("Stasik", "MN12312", 17, "male", "", 420),
+           Tenants("akarev0", "MM12129", 18, "male", "", 311)]

@@ -1,6 +1,6 @@
 import json
 
-from flask import request
+from flask import request, Response
 from flask_restful import Resource, marshal_with, reqparse
 
 from rooms.resource import rooms, Rooms
@@ -34,17 +34,21 @@ class RoomsChange(Resource):
                 room.level = data.get('level') or room.level
                 room.status = data.get('status') or room.status
                 room.price = data.get('price') or room.price
-                break
+                return Response("{} info was updated".format(room.number), 200)
 
     def post(self):
         data = json.loads(request.data)
         if str(data.get('number')) in [str(room.number) for room in rooms]:
-            raise ValueError("This room is already exist")
-        if data.get('price') >= 0:
+            return Response("This room is already exist", 412)
+        if data.get('price') > 0:
             new_room = Rooms(data.get('number'), data.get('level'), data.get('status'), data.get('price'))
             rooms.append(new_room)
-            return "append"
-        raise ValueError("Price cant be negative")
+            return Response("Room {} was added".format(data.get('number')), 201)
+        return Response("Price cant be negative", 412)
 
     def delete(self, room_number):
-        [rooms.remove(room) for room in rooms if str(room.number) == room_number]
+        if room_number in [str(room.number) for room in rooms]:
+            [rooms.remove(room) for room in rooms if str(room.number) == room_number]
+            return "Room {} was deleted".format(room_number)
+        else:
+            return Response("This room doesnt exist", 412)
