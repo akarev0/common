@@ -1,7 +1,9 @@
 import json
 
+from sqlalchemy.exc import IntegrityError, DataError
+
 from db import db
-from flask import request
+from flask import request, Response
 from flask_restful import Resource, marshal_with
 
 from models.models import StaffModel, RoomsModel
@@ -18,10 +20,13 @@ class Staff(Resource):
 
     def post(self):
         data = json.loads(request.data)
-        new_staff = StaffModel(**data)
-        db.session.add(new_staff)
-        db.session.commit()
-        return "Staff {} successfully added".format(new_staff.name)
+        try:
+            new_staff = StaffModel(**data)
+            db.session.add(new_staff)
+            db.session.commit()
+            return Response("{} was successfully added to staff".format(new_staff.name), 200)
+        except (IntegrityError, DataError):
+            return Response("Nobody added, please try change type or make fields unique", 400)
 
     def put(self, value):
         data = json.loads(request.data)
