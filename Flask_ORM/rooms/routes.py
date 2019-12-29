@@ -1,7 +1,10 @@
 import json
+from json import JSONDecodeError
 
-from flask import request
+from flask import request, Response
 from flask_restful import Resource, marshal_with, reqparse
+from sqlalchemy.exc import IntegrityError
+from sqlalchemy.orm.exc import UnmappedInstanceError
 
 from db import db
 from models.models import RoomsModel
@@ -29,30 +32,39 @@ class Rooms(Resource):
         else:
             return data
 
-    def put(self, value):
-        data = json.loads(request.data)
-        post = RoomsModel.query.get(value)
-
-        post.number = data.get('number')
-        post.level = data.get('level')
-        post.status = data.get('status')
-        post.price = data.get('price')
-        post.tenant_ID = data.get('tenant_ID')
-        db.session.commit()
-
-        return "Room {} successfully update".format(post.number)
-
     def post(self):
         data = json.loads(request.data)
-        new_room = RoomsModel(**data)
-        db.session.add(new_room)
-        db.session.commit()
+        try:
+            new_room = RoomsModel(**data)
+            try:
+                int(data.get('price'))
+            except ValueError:
+                return Response("Price must be integer!", 412)
+            if int(data.get('price')) < 0:
+                return Response("Price cannot be negative!", 412)
+            db.session.add(new_room)
+            db.session.commit()
+            return Response("Room {} successfully added!".format(data), 200)
+        except IntegrityError:
+            return Response("This room is already exist!", 412)
 
-        return "Room {} successfully added".format(new_room.number)
+    def put(self, value):
+        data = json.loads(request.data)
+        if data:
+            post = RoomsModel.query.get(value)
+            post.number = data.get('number') or post.number
+            post.level = data.get('level') or post.level
+            post.status = data.get('status') or post.status
+            post.price = data.get('price') or post.price
+            post.tenant_ID = data.get('tenant_ID') or post.tenant_ID
+            db.session.commit()
+            return Response("Room {} successfully update".format(data), 200)
 
     def delete(self, value):
         post = RoomsModel.query.get(value)
-        db.session.delete(post)
-        db.session.commit()
-
-        return "Room {} successfully deleted".format(post.number)
+        try:
+            db.session.delete(post)
+            db.session.commit()
+            return Response("Room {} successfully deleted".format(post.number), 200)
+        except UnmappedInstanceError:
+            return Response("This room did not exist!", 404)

@@ -33,8 +33,8 @@ class TenantsModel(db.Model):
 
     passport_ID = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String, unique=True, nullable=False)
-    age = db.Column(db.Integer, unique=False, nullable=False)
-    sex = db.Column(db.String, unique=False, nullable=False)
-    city = db.Column(db.String, unique=False, nullable=False)
-    address = db.Column(db.String, unique=False, nullable=False)
+    age = db.Column(db.Integer)
+    sex = db.Column(db.String)
+    city = db.Column(db.String)
+    address = db.Column(db.String)
     tenant_room = db.relationship('RoomsModel', backref='room')
