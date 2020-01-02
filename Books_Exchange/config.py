@@ -2,11 +2,11 @@ import os
 
 
 class Config:
-    PG_USER = "librarian"
+    PG_USER = "librarian_1"
     PG_PASSWORD = "password"
     PG_HOST = "localhost"
     PG_PORT = 5432
-    DB_NAME = "books_exchange"
+    DB_NAME = "book_exchange"
     SQLALCHEMY_DATABASE_URI = f"postgresql://{PG_USER}:{PG_PASSWORD}@{PG_HOST}:{PG_PORT}/{DB_NAME}"
     DEBUG = True
 
