@@ -26,13 +26,13 @@ class Book(db.Model):
     edition = db.Column(db.String, nullable=False)
     edition_year = db.Column(db.String, nullable=False)
     translation = db.Column(db.String, nullable=True)
-    library_id = db.Column(db.Integer, db.ForeignKey('library.id'), nullable=False)
+    # library_id = db.Column(db.Integer, db.ForeignKey('library.id'), nullable=False)
 
 
 class Library(db.Model):
     __tablename__ = "library"
 
     id = db.Column(db.Integer, autoincrement=True, primary_key=True)
-    name = db.Column(db.String, nullable=False)
+    book_title = db.Column(db.String, db.ForeignKey('books.book_title'), nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
-    books = db.relationship('books', backref='book')
+    # books = db.relationship('Book', backref='books_list')

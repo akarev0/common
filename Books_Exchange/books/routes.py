@@ -1,6 +1,6 @@
 import json
 
-from flask import request
+from flask import request, Response
 from flask_restful import Resource, marshal_with
 
 from books.structure import book_structure
@@ -20,3 +20,4 @@ class Books(Resource):
         new_book = Book(**data)
         db.session.add(new_book)
         db.session.commit()
+        return Response("{} added to Book list!".format(data), 200)
