@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block main_info%}
+<div>
+    <ul>
+        <li>
+            <a href="{{url_for('products.get_products')}}">Products</a>
+        </li>
+        <li>
+            <a href="{{url_for('supermarkets.get_supermarkets')}}">Supermarkets</a>
+        </li>
+    </ul>
+</div>
+{% endblock %}
+
+
