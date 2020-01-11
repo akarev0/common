@@ -1,9 +1,11 @@
 FROM python:3.7
 
-RUN pip install django
 
 COPY ./homework /app/homework
+COPY ./requirements.txt /app
 COPY ./manage.py /app
+
+RUN pip install -r app/requirements.txt
 
 WORKDIR /app
 
