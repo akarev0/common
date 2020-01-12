@@ -9,5 +9,5 @@ class StatusViewTests(TestCase):
     client = Client()
 
     def test_status_view(self):
-        response = self.client.get(reverse('status'))
+        response = self.client.get(reverse('health_check'))
         assert response.status_code == HTTPStatus.OK

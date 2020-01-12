@@ -1,0 +1,9 @@
+venv
+      ../Books_Exchange/
+        ../Flask_ORM/venv/
+        ../Flask_restful_Api/venv/
+        ../advanced_flask/venv/
+        homework/templates/
+        ../flask_orm_practice/tests/
+        ../flask_orm_practice/venv/
+        ../lesson_practice/
