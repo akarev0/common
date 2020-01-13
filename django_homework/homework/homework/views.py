@@ -1,39 +1,14 @@
 import requests
 from django.http import HttpResponse
-from django.shortcuts import render
-from django.template import Context
+
 from django.template.loader import get_template
 
-SIMPLE_TEMPLATE = """
-<html>
-<head>
-    <title>Pokemon</title>
-</head>
-<body>
-    <a href="/question">GIVE ME POKEMONS</a>
-</body>
-</html>
-"""
-
-QUESTION_TEMPLATE = """<html>
-<head>
-    <title>Pokemon</title>
-</head>
-<body>
-    <a href="/index">RETURN TO INDEX</a>
-</body>
-</html>
-"""
-
-POKEMON_URL = 'https://pokeapi.co/api/v2/'
+from .settings import POKEMON_URL
 
 
 def health_check(request):
     return HttpResponse("OK")
 
-
-# def index(request):
-#     return HttpResponse(SIMPLE_TEMPLATE)
 
 def index(request):
     template = get_template('index.html').render()
