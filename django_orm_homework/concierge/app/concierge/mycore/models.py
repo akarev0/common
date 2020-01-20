@@ -66,10 +66,10 @@ class Room(models.Model):
         blank=True,
         null=True
     )
-    tenant_name = models.ForeignKey(
-        'tenant_name',
-        on_delete=models.CASCADE,
-
-    )
+    # tenant_name = models.ForeignKey(
+    #     'tenant_name',
+    #     on_delete=models.CASCADE,
+    #
+    # )
 
 #TODO model Journal
