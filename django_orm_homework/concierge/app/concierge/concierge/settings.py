@@ -27,7 +27,7 @@ SECRET_KEY = 'a5-dtc!&0p!n)r#hkd613c*iu8zwr9pj03*z=$cyr1h6$e-!b+'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['0.0.0.0']
+ALLOWED_HOSTS = ['localhost:8000']
 
 
 # Application definition
@@ -81,14 +81,14 @@ DATABASES = {
         'NAME': 'concierge_db',
         'USER': 'concierge_dev',
         'PASSWORD': 'simplepass',
-        'HOST': 'db',
-        'PORT': 5432,
-        'TEST': {
-            'HOST': 'db',
-            'PORT': 5432,
-            'NAME': 'concierge_test_db',
-            'USER': 'concierge_dev',
-        }
+        'HOST': 'localhost',
+        'PORT': 5460,
+        # 'TEST': {
+        #     'HOST': 'db',
+        #     'PORT': 5432,
+        #     'NAME': 'concierge_test_db',
+        #     'USER': 'concierge_dev',
+        # }
     }
 }
 

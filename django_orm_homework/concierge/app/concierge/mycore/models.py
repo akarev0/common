@@ -37,6 +37,8 @@ class Tenant(models.Model):
         blank=True,
         null=True,
     )
+    room = models.ForeignKey('Room', null=True,
+                             on_delete=models.SET)
 
     @property
     def fullname(self):
@@ -66,10 +68,5 @@ class Room(models.Model):
         blank=True,
         null=True
     )
-    # tenant_name = models.ForeignKey(
-    #     'tenant_name',
-    #     on_delete=models.CASCADE,
-    #
-    # )
 
 #TODO model Journal
