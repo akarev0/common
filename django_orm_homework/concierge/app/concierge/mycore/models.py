@@ -1,6 +1,7 @@
 from django.db import models
 
 # Create your models here.
+from django.db.models import OneToOneField, DO_NOTHING, DateTimeField, ForeignKey
 
 
 class Tenant(models.Model):
@@ -62,11 +63,18 @@ class Room(models.Model):
         blank=False,
         null=False
     )
-    maximum_number_of_guest = models.CharField(
-        'max_guest',
-        max_length=2,
-        blank=True,
-        null=True
+
+
+class Key(models.Model):
+    room = OneToOneField(
+        Room,
+        primary_key=True,
+        on_delete=DO_NOTHING
     )
 
-#TODO model Journal
+
+class Journal(models.Model):
+    key_out_date = DateTimeField()
+    key_in_date = DateTimeField()
+    tenant_id = ForeignKey(Tenant, on_delete=DO_NOTHING)
+    key_id = ForeignKey(Key, on_delete=DO_NOTHING)
