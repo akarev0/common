@@ -18,8 +18,7 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path
 
-from .views import health_check
-
+from .views import health_check, index, api_serializer
 
 static_patterns = static(settings.MEDIA_URL,
                          document_root=settings.MEDIA_ROOT) + \
@@ -29,4 +28,6 @@ static_patterns = static(settings.MEDIA_URL,
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('healthcheck/', health_check, name='health_check'),
-] + static_patterns
+    path('api/<str:object_type>/<int:object_id>', api_serializer, name='api'),
+    path('', index, name='index'),
+]

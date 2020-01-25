@@ -57,7 +57,7 @@ ROOT_URLCONF = 'concierge.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -80,15 +80,15 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'concierge_db',
         'USER': 'concierge_dev',
-        'PASSWORD': 'simplepass',
-        'HOST': 'localhost',
-        'PORT': 5460,
-        # 'TEST': {
-        #     'HOST': 'db',
-        #     'PORT': 5432,
-        #     'NAME': 'concierge_test_db',
-        #     'USER': 'concierge_dev',
-        # }
+        'PASSWORD': 'password',
+        'HOST': 'db',
+        'PORT': 5432,
+        'TEST': {
+            'HOST': 'db',
+            'PORT': 5432,
+            'NAME': 'concierge_test_db',
+            'USER': 'concierge_dev',
+        }
     }
 }
 
@@ -167,3 +167,24 @@ LOGGING = {
     },
 }
 # dictConfig(LOGGING)
+
+CACHE_TTL = 60 * 5
+CACHES = {
+
+    "default": {
+
+        "BACKEND": "django_redis.cache.RedisCache",
+
+        "LOCATION": "redis://redis:6379/0",
+
+        "OPTIONS": {
+
+            "CLIENT_CLASS": "django_redis.client.DefaultClient",
+
+        },
+
+        "KEY_PREFIX": "concierge"
+
+    }
+
+}
