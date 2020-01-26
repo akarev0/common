@@ -1,3 +1,4 @@
+from django.core import serializers
 from django.http import HttpResponse
 from django.template.loader import render_to_string
 
@@ -15,8 +16,10 @@ def index(request):
 def api_serializer(request, object_type, object_id):
     try:
         model = getattr(models, object_type.capitalize()).objects.all()
-        instances = model.objects.get(id=object_id)
+        return HttpResponse(
+            serializers.serialize("xml", [model.objects.get(id=object_id)])
+        )
     except AttributeError:
         # do 404 page
         ...
-    return HttpResponse("OK")
+    return HttpResponse("DOESN'T WORK")

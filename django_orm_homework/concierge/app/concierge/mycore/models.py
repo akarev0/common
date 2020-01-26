@@ -57,12 +57,7 @@ class Tenant(models.Model):
 
 class Room(models.Model):
 
-    room_number = models.CharField(
-        'room_number',
-        max_length=5,
-        blank=False,
-        null=False
-    )
+    room_number = models.IntegerField()
 
 
 class Key(models.Model):

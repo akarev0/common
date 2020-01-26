@@ -4,7 +4,7 @@ from django.contrib import admin
 from django.urls import path
 
 
-from ..mycore.views import TenantListView
+from .views import TenantListView
 
 static_patterns = static(settings.MEDIA_URL,
                          document_root=settings.MEDIA_ROOT) + \
