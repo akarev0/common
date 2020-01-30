@@ -58,6 +58,7 @@ class Tenant(models.Model):
 class Room(models.Model):
 
     room_number = models.IntegerField()
+    guests_number = models.IntegerField(null=True)
 
 
 class Key(models.Model):

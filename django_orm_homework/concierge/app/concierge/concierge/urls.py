@@ -18,7 +18,7 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path
 
-from .views import health_check, index, api_serializer
+from .views import health_check, index, api_serializer, KeyTransferView
 
 static_patterns = static(settings.MEDIA_URL,
                          document_root=settings.MEDIA_ROOT) + \
@@ -29,5 +29,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('healthcheck/', health_check, name='health_check'),
     path('api/<str:object_type>/<int:object_id>', api_serializer, name='api'),
+    path('key-transfer/', KeyTransferView.as_view(), name='api'),
     path('', index, name='index'),
 ]
