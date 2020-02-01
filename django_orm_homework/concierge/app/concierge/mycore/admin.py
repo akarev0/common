@@ -6,9 +6,9 @@ from .models import Tenant, Room, Journal, Key
 
 @admin.register(Tenant)
 class TenantAdmin(admin.ModelAdmin):
-    list_display = ('first_name', 'last_name', 'date_of_birth', 'phone')
-    search_fields = ('first_name', 'last_name', 'phone', 'date_of_birth')
-    list_filter = ('date_of_birth', 'last_name')
+    list_display = ('first_name', 'last_name')
+    search_fields = ('first_name', 'last_name')
+    list_filter = ('first_name', 'last_name')
 
 
 class JournalAdmin(admin.ModelAdmin):

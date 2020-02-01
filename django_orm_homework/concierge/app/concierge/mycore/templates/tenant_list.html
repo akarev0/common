@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tenant List</title>
+</head>
+    <h1>Tenant List</h1>
+    {% for tenant in tenants %}
+    <div>
+        <ul>
+            <li>
+                {{ tenant.first_name }} {{ tenant.last_name }}
+            </li>
+        </ul>
+    </div>
+    {% endfor %}
+    <a href="{% url 'index' %}">Main</a>
+<body>
+
+</body>
+</html>

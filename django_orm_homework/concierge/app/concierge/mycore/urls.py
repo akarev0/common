@@ -1,17 +1,13 @@
-from django.conf import settings
-from django.conf.urls.static import static
-from django.contrib import admin
 from django.urls import path
 
-
-from .views import TenantListView
-
-static_patterns = static(settings.MEDIA_URL,
-                         document_root=settings.MEDIA_ROOT) + \
-                  static(settings.STATIC_URL,
-                         document_root=settings.STATIC_ROOT)
+from .views import index, health_check, my_core_serializer, JournalView, tenant_list, rooms_list, journal_list
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('tenant/List/', TenantListView.as_view()),
-] + static_patterns
+    path('', index, name='index'),
+    path('health-check/', health_check, name='health-check'),
+    path('<str:object_type>/<int:object_id>', my_core_serializer, name='my_core_serializer'),
+    path('key-transfer/', JournalView.as_view(), name='key-transfer'),
+    path('tenant-list/', tenant_list, name='tenant_list'),
+    path('rooms-list/', rooms_list, name='rooms-list'),
+    path('journal-view/', journal_list, name='journal_view'),
+]

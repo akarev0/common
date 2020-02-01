@@ -22,8 +22,7 @@ services:
         restart: always
         build: ./db
         volumes:
-            - ./data/pgdb:/var/lib/postgresql/data:rw
-#            - ./data02:/pgdb:/var/lib/postgresql/data:rw
+            - ./data1/pgdb:/var/lib/postgresql/data:rw
         ports:
             - 5432:5432
         healthcheck:
