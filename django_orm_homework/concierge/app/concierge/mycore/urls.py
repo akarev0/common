@@ -1,6 +1,8 @@
+from django.contrib.auth.decorators import permission_required
 from django.urls import path
 
-from .views import index, health_check, my_core_serializer, JournalView, tenant_list, rooms_list, journal_list
+from .views import index, health_check, my_core_serializer, JournalView, tenant_list, rooms_list, journal_list, \
+    TenantListView
 
 urlpatterns = [
     path('', index, name='index'),
@@ -10,4 +12,5 @@ urlpatterns = [
     path('tenant-list/', tenant_list, name='tenant_list'),
     path('rooms-list/', rooms_list, name='rooms-list'),
     path('journal-view/', journal_list, name='journal_view'),
+    path('tenant/list/', permission_required('mycore.view_tenant')(TenantListView.as_view())),
 ]

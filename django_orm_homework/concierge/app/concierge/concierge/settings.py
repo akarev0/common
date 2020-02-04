@@ -15,6 +15,7 @@ from logging.config import dictConfig
 import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
+
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
@@ -27,7 +28,7 @@ SECRET_KEY = 'a5-dtc!&0p!n)r#hkd613c*iu8zwr9pj03*z=$cyr1h6$e-!b+'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1']
+ALLOWED_HOSTS = ['0.0.0.0']
 
 
 # Application definition
@@ -43,6 +44,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    'concierge.middleware.SimpleMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -81,7 +83,7 @@ DATABASES = {
         'NAME': 'concierge_db',
         'USER': 'concierge_dev',
         'PASSWORD': 'password',
-        'HOST': 'localhost',
+        'HOST': 'db',
         'PORT': 5432,
         'TEST': {
             'HOST': 'db',
@@ -92,6 +94,19 @@ DATABASES = {
     }
 }
 
+# Cache
+CACHE_TTL = 60 * 5  # 5 minutes
+
+CACHES = {
+    "default": {
+        "BACKEND": "django_redis.cache.RedisCache",
+        "LOCATION": "redis://redis:6379/0",
+        "OPTIONS": {
+            "CLIENT_CLASS": "django_redis.client.DefaultClient",
+        },
+        "KEY_PREFIX": "concierge"
+    }
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
@@ -135,7 +150,7 @@ STATIC_ROOT = BASE_DIR + '/static'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR + '/media'
 
-
+# dictConfig(LOGGING)
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
@@ -165,26 +180,4 @@ LOGGING = {
             'propagate': False
         },
     },
-}
-# dictConfig(LOGGING)
-
-CACHE_TTL = 60 * 5
-CACHES = {
-
-    "default": {
-
-        "BACKEND": "django_redis.cache.RedisCache",
-
-        "LOCATION": "redis://redis:6379/0",
-
-        "OPTIONS": {
-
-            "CLIENT_CLASS": "django_redis.client.DefaultClient",
-
-        },
-
-        "KEY_PREFIX": "concierge"
-
-    }
-
 }

@@ -2,20 +2,19 @@ version: '3'
 
 services:
 
-#    ##### REDIS #####
-#    redis:
-#        restart: always
-#        image: redis:5.0.7
-#        volumes:
-#            #-
-#            - data01:/data:rw
-#        ports:
-#            - 6379:6379
-#        healthcheck:
-#            test: ["CMD", "redis-cli", "ping"]
-#            interval: 30s
-#            timeout: 10s
-#            retries: 3
+    ##### REDIS #####
+    redis:
+        restart: always
+        image: redis:5.0.7
+        volumes:
+            - data01:/data:rw
+        ports:
+            - 6379:6379
+        healthcheck:
+            test: ["CMD", "redis-cli", "ping"]
+            interval: 30s
+            timeout: 10s
+            retries: 3
 
     ##### POSTGRES #####
     db:
@@ -32,20 +31,20 @@ services:
             retries: 5
 
 
-#    ##### APP #####
-#    app:
-#        restart: always
-#        user: "${uid}:${gid}"
-#        build: ./app
-#        tty: true
-#        volumes:
-#          - ./app:/usr/src/app:rw
-#        ports:
-#          - 8000:8000
-#        command: "python concierge/manage.py runserver 0.0.0.0:8000"
-#        depends_on:
-#          - db
-#          - redis
-#volumes:
-#    data01:
-#        driver: local
+    ##### APP #####
+    app:
+        restart: always
+        user: "${uid}:${gid}"
+        build: ./app
+        tty: true
+        volumes:
+          - ./app:/usr/src/app:rw
+        ports:
+          - 8000:8000
+        command: "python concierge/manage.py runserver 0.0.0.0:8000"
+        depends_on:
+          - db
+          - redis
+volumes:
+    data01:
+        driver: local

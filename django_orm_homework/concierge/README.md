@@ -24,3 +24,17 @@ Create super user
 
 Apply migrations
 # concierge/manage.py migrate
+
+
+homework middleware:
+
+1. Add cache (redis) to my project. Set cache "Tenant List" page (TTL=5 min)
+2.Add middleware, that calculates and logs to console 'generation' time(1 sec) for each requested page.
+3. Add user "tenant", password '686775gJ' with permission:
+    - can view tenant;
+    - can view journal.
+4. Add user "Concierge", password '686775gJ' with permission:
+    - can view journal;
+    - can add journal;
+    - can change journal;
+    - can delete journal;
