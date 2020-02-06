@@ -25,6 +25,8 @@ Create super user
 Apply migrations
 # concierge/manage.py migrate
 
+Add working form:
+hint: date format '2006-10-25'
 
 homework middleware:
 

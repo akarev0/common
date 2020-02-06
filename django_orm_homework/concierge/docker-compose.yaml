@@ -33,7 +33,7 @@ services:
 
     ##### APP #####
     app:
-        restart: always
+        restart: on-failure
         user: "${uid}:${gid}"
         build: ./app
         tty: true

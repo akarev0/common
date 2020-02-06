@@ -1,14 +1,11 @@
-import time
 from http import HTTPStatus
 
-from django.contrib.auth.decorators import permission_required
+from django.contrib.auth.decorators import login_required
 from django.core import serializers
 from django.http import HttpResponse
-# Create your views here.
 from django.shortcuts import render
-from django.utils.datetime_safe import datetime
 from django.views.decorators.cache import cache_page
-from django.views.generic import FormView, ListView
+from django.views.generic import CreateView
 
 from concierge.settings import CACHE_TTL
 from mycore import models
@@ -24,10 +21,6 @@ def index(request):
     return render(request, 'index.html', context)
 
 
-def health_check(request):
-    return HttpResponse("OK")
-
-
 @cache_page(CACHE_TTL)
 def tenant_list(request):
     tenants = Tenant.objects.all()
@@ -39,6 +32,7 @@ def rooms_list(request):
     return render(request, 'rooms_list.html', {'rooms': rooms})
 
 
+@login_required
 def journal_list(request):
     transfers = Journal.objects.all()
     return render(request, 'journal_view.html', {'transfers': transfers})
@@ -56,21 +50,12 @@ def my_core_serializer(request, object_type, object_id):
         return HttpResponse(status=HTTPStatus.NOT_FOUND)
 
 
-class JournalView(FormView):
-    template_name = 'key_transfer_form.html'
+class JournalCreateView(CreateView):
+    template_name = 'journal_form.html'
     form_class = JournalForm
     success_url = '/mycore/'
 
-    def form_valid(self, form):
-        form.save_key_transfer()
-        return HttpResponse(status=HTTPStatus.CREATED)
-
-
-class TenantListView(ListView):
-    model = Tenant
-
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['current_date'] = datetime.utcnow()
-        time.sleep(1)
+        context['journal'] = Journal.objects.all()
         return context

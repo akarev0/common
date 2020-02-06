@@ -16,8 +16,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
+from concierge.views import health_check
+
 urlpatterns = [
     path('accounts/', include('django.contrib.auth.urls')),
     path('mycore/', include('mycore.urls')),
     path('admin/', admin.site.urls),
+    path('health-check/', health_check, name='health-check'),
 ]

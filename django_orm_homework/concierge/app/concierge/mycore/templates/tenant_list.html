@@ -9,7 +9,11 @@
     <div>
         <ul>
             <li>
+                {% if perms.mycore.change_tenant %}
+                <a href="{% url 'index' %}">{{ tenant.first_name }} {{ tenant.last_name }}</a>
+                {% else%}
                 {{ tenant.first_name }} {{ tenant.last_name }}
+                {% endif %}
             </li>
         </ul>
     </div>
