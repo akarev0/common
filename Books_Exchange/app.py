@@ -5,6 +5,8 @@ from books import books_bp
 from create_db import create_db
 from db import db
 from config import run_config
+from library import library_bp
+from user_books import user_book_bp
 from users import users_bp
 
 
@@ -17,6 +19,8 @@ def create_app():
     my_app.register_blueprint(create_db)
     my_app.register_blueprint(users_bp)
     my_app.register_blueprint(books_bp)
+    my_app.register_blueprint(user_book_bp)
+    my_app.register_blueprint(library_bp)
 
     return my_app
 

@@ -5,7 +5,3 @@ users_structure = {
     'name': fields.String,
     'email': fields.String,
 }
-
-book_structure = {
-    "name": fields.String
-}

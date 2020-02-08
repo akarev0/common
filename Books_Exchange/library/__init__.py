@@ -1,0 +1,11 @@
+from flask import Blueprint
+from flask_restful import Api
+
+from library.routes import LibraryView
+
+
+library_bp = Blueprint('library', __name__)
+library_api = Api(library_bp)
+
+
+library_api.add_resource(LibraryView, '/library', '/library/<user_id>')
