@@ -30,4 +30,4 @@ class BookHolderName(Resource):
     def get(self):
         args = library_parser.parse_args(strict=True)
         user = User.query.filter_by(name=args.get('name')).first()
-        return user.libraries
+        return user.library
