@@ -1,0 +1,11 @@
+*~
+*.swp
+*.swo
+*.pyc
+*.log
+data/
+media/
+__pycache__/
+.idea/
+data
+data1

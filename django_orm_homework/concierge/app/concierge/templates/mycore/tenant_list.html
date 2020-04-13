@@ -1,0 +1,23 @@
+<html>
+  <head>
+    <title>{{ title }}</title>
+  </head>
+  <body>
+    <p>{{ request.user }}</p>
+    <h1>Tenant list</h1>
+    <p>Current date - {{ current_date }}</p>
+    <ul>
+    {% for tenant in object_list %}
+        <li>
+          {% if perms.mycore.change_tenant %}
+          <a href="{% url 'index' %}">{{ tenant.first_name }}</a>
+          {% else%}
+            {{ tenant.first_name }}
+          {% endif %}
+        </li>
+    {% empty %}
+        <li>No tenents yet.</li>
+    {% endfor %}
+    </ul>
+  </body>
+</html>

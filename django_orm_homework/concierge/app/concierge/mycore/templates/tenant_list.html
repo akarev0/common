@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tenant List</title>
+</head>
+    <h1>Tenant List</h1>
+    {% for tenant in tenants %}
+    <div>
+        <ul>
+            <li>
+                {% if perms.mycore.change_tenant %}
+                <a href="{% url 'index' %}">{{ tenant.first_name }} {{ tenant.last_name }}</a>
+                {% else%}
+                {{ tenant.first_name }} {{ tenant.last_name }}
+                {% endif %}
+            </li>
+        </ul>
+    </div>
+    {% endfor %}
+    <a href="{% url 'index' %}">Main</a>
+<body>
+
+</body>
+</html>

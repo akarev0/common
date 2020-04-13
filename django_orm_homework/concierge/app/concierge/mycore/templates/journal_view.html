@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Journal</title>
+</head>
+    <h1>Journal</h1>
+    {% for note in transfers %}
+    <div>
+        <ul>
+            <li>
+                {{ note.key_out_date }}
+                {{ note.key_in_date }}
+                {{ note.tenant }}
+                {{ note.key }}
+            </li>
+        </ul>
+    </div>
+    {% endfor %}
+    <a href="{% url 'index' %}">Main</a>
+<body>
+
+</body>
+</html>
